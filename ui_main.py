@@ -602,6 +602,37 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addWidget(self.label_solution_2)
         self.stackedWidget.addWidget(self.solution_2_page)
 
+        #Gurobi result problem 1
+        self.gurobi_res1_page = QWidget()
+        self.gurobi_res1_page.setObjectName("gurobi_res1_page")
+        self.verticalLayout_6 = QVBoxLayout(self.gurobi_res1_page)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.label_gurobi_res1 = QLabel(self.gurobi_res1_page)
+        self.label_gurobi_res1.setObjectName("label_gurobi_res1")
+        self.label_gurobi_res1.setText("This is Gurobi result 1")
+        self.label_gurobi_res1.setAlignment(Qt.AlignCenter)
+        self.label_gurobi_res1.setFont(font1)
+        self.label_gurobi_res1.setStyleSheet("color: #FFF;")
+        self.verticalLayout_6.addWidget(self.label_gurobi_res1)
+        self.stackedWidget.addWidget(self.gurobi_res1_page)
+
+
+
+
+        #Gurobi result problem 2 
+        self.gurobi_res2_page = QWidget()
+        self.gurobi_res2_page.setObjectName("gurobi_res2_page")
+        self.verticalLayout_6 = QVBoxLayout(self.gurobi_res2_page)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.label_gurobi_res2 = QLabel(self.gurobi_res2_page)
+        self.label_gurobi_res2.setObjectName("label_gurobi_res2")
+        self.label_gurobi_res2.setText("This is Gurobi result 2")
+        self.label_gurobi_res2.setAlignment(Qt.AlignCenter)
+        self.label_gurobi_res2.setFont(font1)
+        self.label_gurobi_res2.setStyleSheet("color: #FFF;")
+        self.verticalLayout_6.addWidget(self.label_gurobi_res2)
+        self.stackedWidget.addWidget(self.gurobi_res2_page)
+
 
         self.page_3 = QWidget()
         self.page_3.setObjectName("page_3")
@@ -621,14 +652,16 @@ class Ui_MainWindow(object):
 
         # Table
         self.table = QTableWidget(self.page_3)
-        self.table.setColumnCount(6)  # Example: 6 columns
+        self.table.setColumnCount(8) 
         # Set column widths
         self.table.setColumnWidth(0, 50)  # ID column
-        self.table.setColumnWidth(1, 100)  # Input 1 column
-        self.table.setColumnWidth(2, 100)  # Input 2 column
-        self.table.setColumnWidth(3, 100)  # Input 3 column
-        self.table.setColumnWidth(4, 100)  # Input 4 column
-        self.table.setColumnWidth(5, 150)  # Created In column
+        self.table.setColumnWidth(1, 130)  # Problem name column
+        self.table.setColumnWidth(2, 70)  # Input 1 column
+        self.table.setColumnWidth(3, 70)  # Input 2 column
+        self.table.setColumnWidth(4, 70)  # Input 3 column
+        self.table.setColumnWidth(5, 70)  # Input 4 column
+        self.table.setColumnWidth(6, 460)  # Result column
+        self.table.setColumnWidth(7, 200)  # Created In column
         # Set font size for table
         font = QFont()
         font.setPointSize(15)  # Set font size to 10 points
@@ -641,9 +674,9 @@ class Ui_MainWindow(object):
 
         # Set row heights
         for row in range(self.table.rowCount()):
-            self.table.setRowHeight(row, 40)  # Set height for each row
+            self.table.setRowHeight(row, 60)  # Set height for each row
         # Set column headers
-        self.table.setHorizontalHeaderLabels(["ID", "Input 1", "Input 2", "Input 3", "Input 4","Created In"])
+        self.table.setHorizontalHeaderLabels(["ID","Problem Name", "Input 1", "Input 2", "Input 3", "Input 4","Gurobi Result","Created In"])
 
 
         self.verticalLayout_8.addWidget(self.table)

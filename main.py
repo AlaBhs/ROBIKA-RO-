@@ -88,7 +88,7 @@ class MainWindow(QMainWindow):
             )
             cursor = connection.cursor()
 
-            query = "SELECT * FROM history"
+            query = "SELECT * FROM history ORDER BY creation_date DESC"
             cursor.execute(query)
             rows = cursor.fetchall()
 
@@ -110,6 +110,7 @@ class MainWindow(QMainWindow):
         for row_num, row_data in enumerate(rows):
             for col_num, col_data in enumerate(row_data):
                 item = QTableWidgetItem(str(col_data))
+                item.setTextAlignment(Qt.AlignCenter)
                 self.ui.table.setItem(row_num, col_num, item)
 
 
@@ -132,8 +133,10 @@ class MainWindow(QMainWindow):
         input_3_value = self.ui.input_3.value()
         input_4_value = self.ui.input_4.value()
         
+        self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res1_page)
+
         # Save the values in a MySQL database
-        self.save_to_database(input_1_value, input_2_value, input_3_value, input_4_value)
+        self.save_to_database("problem 1", input_1_value, input_2_value, input_3_value, input_4_value, "this is a result")
 
         # Print the values
         print("Input 1 problem 1:", input_1_value)
@@ -154,8 +157,9 @@ class MainWindow(QMainWindow):
         input_3_value = self.ui.input_3_2.value()
         input_4_value = self.ui.input_4_2.value()
         
+        self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res2_page)
         # Save the values in a MySQL database
-        self.save_to_database(input_1_value, input_2_value, input_3_value, input_4_value)
+        self.save_to_database("problem 2", input_1_value, input_2_value, input_3_value, input_4_value, "this is a result")
 
         # Print the values
         print("Input 1 problem 2:", input_1_value)
@@ -169,7 +173,7 @@ class MainWindow(QMainWindow):
         self.ui.input_3_2.setValue(0)
         self.ui.input_4_2.setValue(0)
 
-    def save_to_database(self, input_1, input_2, input_3, input_4):
+    def save_to_database(self, problemName, input_1, input_2, input_3, input_4, result):
         # Connect to MySQL database
         try:
             connection = mysql.connector.connect(
@@ -183,8 +187,8 @@ class MainWindow(QMainWindow):
             cursor = connection.cursor()
 
             # Define the query to insert values into the table
-            query = "INSERT INTO history (input_1, input_2, input_3, input_4) VALUES (%s, %s, %s, %s)"
-            values = (input_1, input_2, input_3, input_4)
+            query = "INSERT INTO history (name, input_1, input_2, input_3, input_4, result) VALUES (%s, %s, %s, %s, %s, %s)"
+            values = (problemName, input_1, input_2, input_3, input_4, result)
 
             # Execute the query
             cursor.execute(query, values)
