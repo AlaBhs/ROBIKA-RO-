@@ -482,6 +482,70 @@ class Ui_MainWindow(object):
 
 
 
+
+        # OvenTime list
+        ovenTime_list_label = QLabel("Oven Time: ")
+        font = QFont()
+        font.setPointSize(25)
+        ovenTime_list_label.setFont(font)
+        ovenTime_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        bottom_layout.addWidget(ovenTime_list_label, 9, 0, alignment=Qt.AlignLeft)
+        # Input 1
+        input_1_ovenTime_label = QLabel("Chocolate chip cookies:")
+        font_input = QFont()
+        font_input.setPointSize(17)
+        font = QFont()
+        font.setPointSize(20)
+        input_1_ovenTime_label.setFont(font)
+        input_1_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        self.input_1_ovenTime = QSpinBox()
+        self.input_1_ovenTime.setFont(font_input)
+        self.input_1_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_1_ovenTime.setFixedWidth(100)
+        self.input_1_ovenTime.setFixedHeight(40)
+        bottom_layout.addWidget(input_1_ovenTime_label, 10, 1, )
+        bottom_layout.addWidget(self.input_1_ovenTime, 10, 2, alignment=Qt.AlignLeft)
+
+        # Input 2
+        input_2_ovenTime_label = QLabel("Oatmeal raisin cookies:")
+        self.input_2_ovenTime = QSpinBox()
+        self.input_2_ovenTime.setFont(font_input)
+        input_2_ovenTime_label.setFont(font)
+        input_2_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_2_ovenTime.setFixedWidth(100)
+        self.input_2_ovenTime.setFixedHeight(40)
+        bottom_layout.addWidget(input_2_ovenTime_label, 10, 3, )
+        bottom_layout.addWidget(self.input_2_ovenTime, 10, 4, alignment=Qt.AlignLeft)
+
+        # Input 3
+        input_3_ovenTime_label = QLabel("Banana nut muffins:")
+        self.input_3_ovenTime = QSpinBox()
+        self.input_3_ovenTime.setFont(font_input)
+        input_3_ovenTime_label.setFont(font)
+        input_3_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_3_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_3_ovenTime.setFixedWidth(100)
+        self.input_3_ovenTime.setFixedHeight(40)
+        bottom_layout.addWidget(input_3_ovenTime_label, 11, 1, )
+        bottom_layout.addWidget(self.input_3_ovenTime, 11, 2, alignment=Qt.AlignLeft)
+
+        # Input 4
+        input_4_ovenTime_label = QLabel("Blueberry muffins:")
+        self.input_4_ovenTime = QSpinBox()
+        self.input_4_ovenTime.setFont(font_input)
+        input_4_ovenTime_label.setFont(font)
+        input_4_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_4_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_4_ovenTime.setFixedWidth(100)
+        self.input_4_ovenTime.setFixedHeight(40)
+        bottom_layout.addWidget(input_4_ovenTime_label, 11, 3, )
+        bottom_layout.addWidget(self.input_4_ovenTime, 11, 4, alignment=Qt.AlignLeft)
+
+
+
+
+
         # Submit button
         self.problem1_submit_btn = QPushButton("Submit")
         self.problem1_submit_btn.setStyleSheet("background-color: #F0F0F0;")
@@ -504,7 +568,7 @@ class Ui_MainWindow(object):
             }
         """)
         self.problem1_submit_btn.setCursor(Qt.PointingHandCursor)
-        bottom_layout.addWidget(self.problem1_submit_btn, 10, 5)
+        bottom_layout.addWidget(self.problem1_submit_btn, 20, 5)
         # Add the bottom widget to the problem_1_page layout
         scroll_layout.addWidget(bottom_widget)
         self.stackedWidget.addWidget(self.problem_1_page)
