@@ -40,11 +40,83 @@ class MainWindow(QMainWindow):
         self.ui.problem1_submit_btn.clicked.connect(self.on_btn_problem_1_submit_clicked)
         # Submit Problem 1 Page
         self.ui.problem2_submit_btn.clicked.connect(self.on_btn_problem_2_submit_clicked)
+        # Connect check box signal to slot
+        self.ui.checkbox_2.clicked.connect(self.on_checkbox_2_clicked)
+        # Connect check box signal to slot
+        self.ui.checkbox_1.clicked.connect(self.on_checkbox_1_clicked)
+        # Connect check box signal to slot
+        self.ui.checkbox_3.clicked.connect(self.on_checkbox_3_clicked)
+        # Connect check box signal to slot
+        self.ui.checkbox_4.clicked.connect(self.on_checkbox_4_clicked)
+
         
         ## SHOW ==> MAIN WINDOW
         ########################################################################
         self.show()
-
+    def on_checkbox_4_clicked(self):
+            # Show or hide input field based on the check box state
+            if self.ui.checkbox_4.isChecked():
+                self.ui.input_4_weighting.show()
+                self.ui.input_4_weighting_label.show()
+                self.ui.input_4_profit_label.show()
+                self.ui.input_4_profit.show()
+                self.ui.input_4_ovenTime.show()
+                self.ui.input_4_ovenTime_label.show()
+            else:
+                self.ui.input_4_weighting.hide()
+                self.ui.input_4_weighting_label.hide()
+                self.ui.input_4_profit_label.hide()
+                self.ui.input_4_profit.hide()
+                self.ui.input_4_ovenTime.hide()
+                self.ui.input_4_ovenTime_label.hide()
+    def on_checkbox_3_clicked(self):
+            # Show or hide input field based on the check box state
+            if self.ui.checkbox_3.isChecked():
+                self.ui.input_3_weighting.show()
+                self.ui.input_3_weighting_label.show()
+                self.ui.input_3_profit_label.show()
+                self.ui.input_3_profit.show()
+                self.ui.input_3_ovenTime.show()
+                self.ui.input_3_ovenTime_label.show()
+            else:
+                self.ui.input_3_weighting.hide()
+                self.ui.input_3_weighting_label.hide()
+                self.ui.input_3_profit_label.hide()
+                self.ui.input_3_profit.hide()
+                self.ui.input_3_ovenTime.hide()
+                self.ui.input_3_ovenTime_label.hide()
+    def on_checkbox_1_clicked(self):
+            # Show or hide input field based on the check box state
+            if self.ui.checkbox_1.isChecked():
+                self.ui.input_1_weighting.show()
+                self.ui.input_1_weighting_label.show()
+                self.ui.input_1_profit_label.show()
+                self.ui.input_1_profit.show()
+                self.ui.input_1_ovenTime.show()
+                self.ui.input_1_ovenTime_label.show()
+            else:
+                self.ui.input_1_weighting.hide()
+                self.ui.input_1_weighting_label.hide()
+                self.ui.input_1_profit_label.hide()
+                self.ui.input_1_profit.hide()
+                self.ui.input_1_ovenTime.hide()
+                self.ui.input_1_ovenTime_label.hide()
+    def on_checkbox_2_clicked(self):
+            # Show or hide input field based on the check box state
+            if self.ui.checkbox_2.isChecked():
+                self.ui.input_2_weighting.show()
+                self.ui.input_2_weighting_label.show()
+                self.ui.input_2_profit_label.show()
+                self.ui.input_2_profit.show()
+                self.ui.input_2_ovenTime.show()
+                self.ui.input_2_ovenTime_label.show()
+            else:
+                self.ui.input_2_weighting.hide()
+                self.ui.input_2_weighting_label.hide()
+                self.ui.input_2_profit_label.hide()
+                self.ui.input_2_profit.hide()
+                self.ui.input_2_ovenTime.hide()
+                self.ui.input_2_ovenTime_label.hide()
     def on_btn_page_clicked(self):
         sender = self.sender()
         # Set all button stylesheets to default
