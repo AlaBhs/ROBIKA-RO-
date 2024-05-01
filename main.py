@@ -128,10 +128,10 @@ class MainWindow(QMainWindow):
 
     def on_btn_problem_1_submit_clicked(self):
         # Read the values entered in the input widgets
-        input_1_value = self.ui.input_1.value()
-        input_2_value = self.ui.input_2.value()
-        input_3_value = self.ui.input_3.value()
-        input_4_value = self.ui.input_4.value()
+        input_1_value = self.ui.input_1_profit.value()
+        input_2_value = self.ui.input_2_profit.value()
+        input_3_value = self.ui.input_3_profit.value()
+        input_4_value = self.ui.input_4_profit.value()
         
         self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res1_page)
 

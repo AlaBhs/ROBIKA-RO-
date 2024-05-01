@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt,QSize
-from PyQt5.QtWidgets import QApplication, QMainWindow,QSpinBox,QGridLayout, QScrollArea, QWidget,QTableWidget,QTableWidgetItem, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFrame, QStackedWidget, QSizePolicy ,QSpacerItem
+from PyQt5.QtWidgets import QApplication, QMainWindow,QSpinBox,QRadioButton,QGridLayout, QScrollArea, QWidget,QTableWidget,QTableWidgetItem, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFrame, QStackedWidget, QSizePolicy ,QSpacerItem
 from PyQt5.QtGui import QFont,QIcon,QPixmap
 
 class Ui_MainWindow(object):
@@ -301,58 +301,186 @@ class Ui_MainWindow(object):
 
         # Create a layout for the bottom widget
         bottom_layout = QGridLayout(bottom_widget)
-
+        # Profit list
+        profit_list_label = QLabel("Profit: ")
+        font = QFont()
+        font.setPointSize(25)
+        profit_list_label.setFont(font)
+        profit_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        bottom_layout.addWidget(profit_list_label, 0, 0, alignment=Qt.AlignLeft)
         # Input 1
-        input_1_label = QLabel("Input 1:")
+        input_1_profit_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
         font_input.setPointSize(17)
         font = QFont()
-        font.setPointSize(25)
-        input_1_label.setFont(font)
-        input_1_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1 = QSpinBox()
-        self.input_1.setFont(font_input)
-        self.input_1.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1.setFixedWidth(100)
-        self.input_1.setFixedHeight(40)
-        bottom_layout.addWidget(input_1_label, 0, 0, alignment=Qt.AlignRight)
-        bottom_layout.addWidget(self.input_1, 0, 1, alignment=Qt.AlignLeft)
+        font.setPointSize(20)
+        input_1_profit_label.setFont(font)
+        input_1_profit_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        self.input_1_profit = QSpinBox()
+        self.input_1_profit.setFont(font_input)
+        self.input_1_profit.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_1_profit.setFixedWidth(100)
+        self.input_1_profit.setFixedHeight(40)
+        bottom_layout.addWidget(input_1_profit_label, 1, 1, )
+        bottom_layout.addWidget(self.input_1_profit, 1, 2, alignment=Qt.AlignLeft)
 
         # Input 2
-        input_2_label = QLabel("Input 2:")
-        self.input_2 = QSpinBox()
-        self.input_2.setFont(font_input)
-        input_2_label.setFont(font)
-        input_2_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-        self.input_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2.setFixedWidth(100)
-        self.input_2.setFixedHeight(40)
-        bottom_layout.addWidget(input_2_label, 0, 2, alignment=Qt.AlignRight)
-        bottom_layout.addWidget(self.input_2, 0, 3, alignment=Qt.AlignLeft)
+        input_2_profit_label = QLabel("Oatmeal raisin cookies:")
+        self.input_2_profit = QSpinBox()
+        self.input_2_profit.setFont(font_input)
+        input_2_profit_label.setFont(font)
+        input_2_profit_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_profit.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_2_profit.setFixedWidth(100)
+        self.input_2_profit.setFixedHeight(40)
+        bottom_layout.addWidget(input_2_profit_label, 1, 3, )
+        bottom_layout.addWidget(self.input_2_profit, 1, 4, alignment=Qt.AlignLeft)
 
         # Input 3
-        input_3_label = QLabel("Input 3:")
-        self.input_3 = QSpinBox()
-        self.input_3.setFont(font_input)
-        input_3_label.setFont(font)
-        input_3_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-        self.input_3.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3.setFixedWidth(100)
-        self.input_3.setFixedHeight(40)
-        bottom_layout.addWidget(input_3_label, 1, 0, alignment=Qt.AlignRight)
-        bottom_layout.addWidget(self.input_3, 1, 1, alignment=Qt.AlignLeft)
+        input_3_profit_label = QLabel("Banana nut muffins:")
+        self.input_3_profit = QSpinBox()
+        self.input_3_profit.setFont(font_input)
+        input_3_profit_label.setFont(font)
+        input_3_profit_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_3_profit.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_3_profit.setFixedWidth(100)
+        self.input_3_profit.setFixedHeight(40)
+        bottom_layout.addWidget(input_3_profit_label, 2, 1, )
+        bottom_layout.addWidget(self.input_3_profit, 2, 2, alignment=Qt.AlignLeft)
 
         # Input 4
-        input_4_label = QLabel("Input 4:")
-        self.input_4 = QSpinBox()
-        self.input_4.setFont(font_input)
-        input_4_label.setFont(font)
-        input_4_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-        self.input_4.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4.setFixedWidth(100)
-        self.input_4.setFixedHeight(40)
-        bottom_layout.addWidget(input_4_label, 1, 2, alignment=Qt.AlignRight)
-        bottom_layout.addWidget(self.input_4, 1, 3, alignment=Qt.AlignLeft)
+        input_4_profit_label = QLabel("Blueberry muffins:")
+        self.input_4_profit = QSpinBox()
+        self.input_4_profit.setFont(font_input)
+        input_4_profit_label.setFont(font)
+        input_4_profit_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_4_profit.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_4_profit.setFixedWidth(100)
+        self.input_4_profit.setFixedHeight(40)
+        bottom_layout.addWidget(input_4_profit_label, 2, 3, )
+        bottom_layout.addWidget(self.input_4_profit, 2, 4, alignment=Qt.AlignLeft)
+
+
+        # Weighting list
+        weighting_list_label = QLabel("Weighting: ")
+        font = QFont()
+        font.setPointSize(25)
+        weighting_list_label.setFont(font)
+        weighting_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        bottom_layout.addWidget(weighting_list_label, 3, 0, alignment=Qt.AlignLeft)
+        # Input 1
+        input_1_weighting_label = QLabel("Chocolate chip cookies:")
+        font_input = QFont()
+        font_input.setPointSize(17)
+        font = QFont()
+        font.setPointSize(20)
+        input_1_weighting_label.setFont(font)
+        input_1_weighting_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        self.input_1_weighting = QSpinBox()
+        self.input_1_weighting.setFont(font_input)
+        self.input_1_weighting.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_1_weighting.setFixedWidth(100)
+        self.input_1_weighting.setFixedHeight(40)
+        bottom_layout.addWidget(input_1_weighting_label, 4, 1, )
+        bottom_layout.addWidget(self.input_1_weighting, 4, 2, alignment=Qt.AlignLeft)
+
+        # Input 2
+        input_2_weighting_label = QLabel("Oatmeal raisin cookies:")
+        self.input_2_weighting = QSpinBox()
+        self.input_2_weighting.setFont(font_input)
+        input_2_weighting_label.setFont(font)
+        input_2_weighting_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_weighting.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_2_weighting.setFixedWidth(100)
+        self.input_2_weighting.setFixedHeight(40)
+        bottom_layout.addWidget(input_2_weighting_label, 4, 3, )
+        bottom_layout.addWidget(self.input_2_weighting, 4, 4, alignment=Qt.AlignLeft)
+
+        # Input 3
+        input_3_weighting_label = QLabel("Banana nut muffins:")
+        self.input_3_weighting = QSpinBox()
+        self.input_3_weighting.setFont(font_input)
+        input_3_weighting_label.setFont(font)
+        input_3_weighting_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_3_weighting.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_3_weighting.setFixedWidth(100)
+        self.input_3_weighting.setFixedHeight(40)
+        bottom_layout.addWidget(input_3_weighting_label, 5, 1, )
+        bottom_layout.addWidget(self.input_3_weighting, 5, 2, alignment=Qt.AlignLeft)
+
+        # Input 4
+        input_4_weighting_label = QLabel("Blueberry muffins:")
+        self.input_4_weighting = QSpinBox()
+        self.input_4_weighting.setFont(font_input)
+        input_4_weighting_label.setFont(font)
+        input_4_weighting_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_4_weighting.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_4_weighting.setFixedWidth(100)
+        self.input_4_weighting.setFixedHeight(40)
+        bottom_layout.addWidget(input_4_weighting_label, 5, 3, )
+        bottom_layout.addWidget(self.input_4_weighting, 5, 4, alignment=Qt.AlignLeft)
+
+        # Ingredients list
+        ingredients_list_label = QLabel("Ingredients: ")
+        font = QFont()
+        font.setPointSize(25)
+        ingredients_list_label.setFont(font)
+        ingredients_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        bottom_layout.addWidget(ingredients_list_label, 6, 0, alignment=Qt.AlignLeft)
+        # Input 1
+        input_1_ingredients_label = QLabel("Flour:")
+        font_input = QFont()
+        font_input.setPointSize(17)
+        font = QFont()
+        font.setPointSize(20)
+        input_1_ingredients_label.setFont(font)
+        input_1_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        self.input_1_ingredients = QSpinBox()
+        self.input_1_ingredients.setFont(font_input)
+        self.input_1_ingredients.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_1_ingredients.setFixedWidth(100)
+        self.input_1_ingredients.setFixedHeight(40)
+        bottom_layout.addWidget(input_1_ingredients_label, 7, 1, )
+        bottom_layout.addWidget(self.input_1_ingredients, 7, 2, alignment=Qt.AlignLeft)
+
+        # Input 2
+        input_2_ingredients_label = QLabel("Sugar:")
+        self.input_2_ingredients = QSpinBox()
+        self.input_2_ingredients.setFont(font_input)
+        input_2_ingredients_label.setFont(font)
+        input_2_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_ingredients.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_2_ingredients.setFixedWidth(100)
+        self.input_2_ingredients.setFixedHeight(40)
+        bottom_layout.addWidget(input_2_ingredients_label, 7, 3, )
+        bottom_layout.addWidget(self.input_2_ingredients, 7, 4, alignment=Qt.AlignLeft)
+
+        # Input 3
+        input_3_ingredients_label = QLabel("Butter:")
+        self.input_3_ingredients = QSpinBox()
+        self.input_3_ingredients.setFont(font_input)
+        input_3_ingredients_label.setFont(font)
+        input_3_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_3_ingredients.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_3_ingredients.setFixedWidth(100)
+        self.input_3_ingredients.setFixedHeight(40)
+        bottom_layout.addWidget(input_3_ingredients_label, 8, 1, )
+        bottom_layout.addWidget(self.input_3_ingredients, 8, 2, alignment=Qt.AlignLeft)
+
+        # Input 4
+        input_4_ingredients_label = QLabel("Eggs:")
+        self.input_4_ingredients = QSpinBox()
+        self.input_4_ingredients.setFont(font_input)
+        input_4_ingredients_label.setFont(font)
+        input_4_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_4_ingredients.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_4_ingredients.setFixedWidth(100)
+        self.input_4_ingredients.setFixedHeight(40)
+        bottom_layout.addWidget(input_4_ingredients_label, 8, 3, )
+        bottom_layout.addWidget(self.input_4_ingredients, 8, 4, alignment=Qt.AlignLeft)
+
+
+
 
         # Submit button
         self.problem1_submit_btn = QPushButton("Submit")
@@ -376,7 +504,7 @@ class Ui_MainWindow(object):
             }
         """)
         self.problem1_submit_btn.setCursor(Qt.PointingHandCursor)
-        bottom_layout.addWidget(self.problem1_submit_btn, 2, 3, alignment=Qt.AlignRight)
+        bottom_layout.addWidget(self.problem1_submit_btn, 10, 5)
         # Add the bottom widget to the problem_1_page layout
         scroll_layout.addWidget(bottom_widget)
         self.stackedWidget.addWidget(self.problem_1_page)
