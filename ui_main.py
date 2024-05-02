@@ -496,50 +496,249 @@ class Ui_MainWindow(object):
         font_input.setPointSize(17)
         input_1_ingredients_label.setFont(font_input_label)
         input_1_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_ingredients = QSpinBox()
-        self.input_1_ingredients.setFont(font_input)
-        self.input_1_ingredients.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_ingredients.setFixedWidth(100)
-        self.input_1_ingredients.setFixedHeight(40)
         bottom_layout.addWidget(input_1_ingredients_label, 7, 1, )
-        bottom_layout.addWidget(self.input_1_ingredients, 7, 2, alignment=Qt.AlignLeft)
+        # Input 1
+        self.input_1_flour_ccc_label = QLabel("Chocolate chip cookies:")
+        font_input = QFont()
+        font_input.setPointSize(17)
+
+        self.input_1_flour_ccc_label.setFont(font_input_label)
+        self.input_1_flour_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        self.input_1_flour_ccc = QSpinBox()
+        self.input_1_flour_ccc.setFont(font_input)
+        self.input_1_flour_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_1_flour_ccc.setFixedWidth(100)
+        self.input_1_flour_ccc.setFixedHeight(40)
+        bottom_layout.addWidget(self.input_1_flour_ccc_label, 8, 1, )
+        bottom_layout.addWidget(self.input_1_flour_ccc, 8, 2, alignment=Qt.AlignLeft)
+
+        # Input 2
+        self.input_2_flour_orc_label = QLabel("Oatmeal raisin cookies:")
+        self.input_2_flour_orc = QSpinBox()
+        self.input_2_flour_orc.setFont(font_input)
+        self.input_2_flour_orc_label.setFont(font_input_label)
+        self.input_2_flour_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_flour_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_2_flour_orc.setFixedWidth(100)
+        self.input_2_flour_orc.setFixedHeight(40)
+        self.input_2_flour_orc.hide()
+        self.input_2_flour_orc_label.hide()
+        bottom_layout.addWidget(self.input_2_flour_orc_label, 8, 3, )
+        bottom_layout.addWidget(self.input_2_flour_orc, 8, 4, alignment=Qt.AlignLeft)
+
+        # Input 3
+        self.input_3_flour_bnm_label = QLabel("Banana nut muffins:")
+        self.input_3_flour_bnm = QSpinBox()
+        self.input_3_flour_bnm.setFont(font_input)
+        self.input_3_flour_bnm_label.setFont(font_input_label)
+        self.input_3_flour_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_3_flour_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_3_flour_bnm.setFixedWidth(100)
+        self.input_3_flour_bnm.setFixedHeight(40)
+        self.input_3_flour_bnm.hide()
+        self.input_3_flour_bnm_label.hide()
+        bottom_layout.addWidget(self.input_3_flour_bnm_label, 9, 1, )
+        bottom_layout.addWidget(self.input_3_flour_bnm, 9, 2, alignment=Qt.AlignLeft)
+
+        # Input 4
+        self.input_4_flour_blm_label = QLabel("Blueberry muffins:")
+        self.input_4_flour_blm = QSpinBox()
+        self.input_4_flour_blm.setFont(font_input)
+        self.input_4_flour_blm_label.setFont(font_input_label)
+        self.input_4_flour_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_4_flour_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_4_flour_blm.setFixedWidth(100)
+        self.input_4_flour_blm.setFixedHeight(40)
+        self.input_4_flour_blm.hide()
+        self.input_4_flour_blm_label.hide()
+        bottom_layout.addWidget(self.input_4_flour_blm_label, 9, 3, )
+        bottom_layout.addWidget(self.input_4_flour_blm, 9, 4, alignment=Qt.AlignLeft) 
 
 
         # Input 2
         input_2_ingredients_label = QLabel("Sugar:")
-        self.input_2_ingredients = QSpinBox()
-        self.input_2_ingredients.setFont(font_input)
         input_2_ingredients_label.setFont(font_input_label)
         input_2_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-        self.input_2_ingredients.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_ingredients.setFixedWidth(100)
-        self.input_2_ingredients.setFixedHeight(40)
-        bottom_layout.addWidget(input_2_ingredients_label, 7, 3, )
-        bottom_layout.addWidget(self.input_2_ingredients, 7, 4, alignment=Qt.AlignLeft)
+        # Input 1
+        self.input_1_sugar_ccc_label = QLabel("Chocolate chip cookies:")
+        font_input = QFont()
+        font_input.setPointSize(17)
+        bottom_layout.addWidget(input_2_ingredients_label, 10, 1, )
+        self.input_1_sugar_ccc_label.setFont(font_input_label)
+        self.input_1_sugar_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        self.input_1_sugar_ccc = QSpinBox()
+        self.input_1_sugar_ccc.setFont(font_input)
+        self.input_1_sugar_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_1_sugar_ccc.setFixedWidth(100)
+        self.input_1_sugar_ccc.setFixedHeight(40)
+        bottom_layout.addWidget(self.input_1_sugar_ccc_label, 11, 1, )
+        bottom_layout.addWidget(self.input_1_sugar_ccc, 11, 2, alignment=Qt.AlignLeft)
+
+        # Input 2
+        self.input_2_sugar_orc_label = QLabel("Oatmeal raisin cookies:")
+        self.input_2_sugar_orc = QSpinBox()
+        self.input_2_sugar_orc.setFont(font_input)
+        self.input_2_sugar_orc_label.setFont(font_input_label)
+        self.input_2_sugar_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_sugar_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_2_sugar_orc.setFixedWidth(100)
+        self.input_2_sugar_orc.setFixedHeight(40)
+        self.input_2_sugar_orc.hide()
+        self.input_2_sugar_orc_label.hide()
+        bottom_layout.addWidget(self.input_2_sugar_orc_label, 11, 3, )
+        bottom_layout.addWidget(self.input_2_sugar_orc, 11, 4, alignment=Qt.AlignLeft)
+
+        # Input 3
+        self.input_3_sugar_bnm_label = QLabel("Banana nut muffins:")
+        self.input_3_sugar_bnm = QSpinBox()
+        self.input_3_sugar_bnm.setFont(font_input)
+        self.input_3_sugar_bnm_label.setFont(font_input_label)
+        self.input_3_sugar_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_3_sugar_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_3_sugar_bnm.setFixedWidth(100)
+        self.input_3_sugar_bnm.setFixedHeight(40)
+        self.input_3_sugar_bnm.hide()
+        self.input_3_sugar_bnm_label.hide()
+        bottom_layout.addWidget(self.input_3_sugar_bnm_label, 12, 1, )
+        bottom_layout.addWidget(self.input_3_sugar_bnm, 12, 2, alignment=Qt.AlignLeft)
+
+        # Input 4
+        self.input_4_sugar_blm_label = QLabel("Blueberry muffins:")
+        self.input_4_sugar_blm = QSpinBox()
+        self.input_4_sugar_blm.setFont(font_input)
+        self.input_4_sugar_blm_label.setFont(font_input_label)
+        self.input_4_sugar_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_4_sugar_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_4_sugar_blm.setFixedWidth(100)
+        self.input_4_sugar_blm.setFixedHeight(40)
+        self.input_4_sugar_blm.hide()
+        self.input_4_sugar_blm_label.hide()
+        bottom_layout.addWidget(self.input_4_sugar_blm_label, 12, 3, )
+        bottom_layout.addWidget(self.input_4_sugar_blm, 12, 4, alignment=Qt.AlignLeft) 
 
         # Input 3
         input_3_ingredients_label = QLabel("Butter:")
-        self.input_3_ingredients = QSpinBox()
-        self.input_3_ingredients.setFont(font_input)
         input_3_ingredients_label.setFont(font_input_label)
         input_3_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-        self.input_3_ingredients.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_ingredients.setFixedWidth(100)
-        self.input_3_ingredients.setFixedHeight(40)
-        bottom_layout.addWidget(input_3_ingredients_label, 8, 1, )
-        bottom_layout.addWidget(self.input_3_ingredients, 8, 2, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(input_3_ingredients_label, 13, 1, )
+        # Input 1
+        self.input_1_butter_ccc_label = QLabel("Chocolate chip cookies:")
+        font_input = QFont()
+        font_input.setPointSize(17)
+
+        self.input_1_butter_ccc_label.setFont(font_input_label)
+        self.input_1_butter_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        self.input_1_butter_ccc = QSpinBox()
+        self.input_1_butter_ccc.setFont(font_input)
+        self.input_1_butter_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_1_butter_ccc.setFixedWidth(100)
+        self.input_1_butter_ccc.setFixedHeight(40)
+        bottom_layout.addWidget(self.input_1_butter_ccc_label, 14, 1, )
+        bottom_layout.addWidget(self.input_1_butter_ccc, 14, 2, alignment=Qt.AlignLeft)
+
+        # Input 2
+        self.input_2_butter_orc_label = QLabel("Oatmeal raisin cookies:")
+        self.input_2_butter_orc = QSpinBox()
+        self.input_2_butter_orc.setFont(font_input)
+        self.input_2_butter_orc_label.setFont(font_input_label)
+        self.input_2_butter_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_butter_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_2_butter_orc.setFixedWidth(100)
+        self.input_2_butter_orc.setFixedHeight(40)
+        self.input_2_butter_orc.hide()
+        self.input_2_butter_orc_label.hide()
+        bottom_layout.addWidget(self.input_2_butter_orc_label, 14, 3, )
+        bottom_layout.addWidget(self.input_2_butter_orc, 14, 4, alignment=Qt.AlignLeft)
+
+        # Input 3
+        self.input_3_butter_bnm_label = QLabel("Banana nut muffins:")
+        self.input_3_butter_bnm = QSpinBox()
+        self.input_3_butter_bnm.setFont(font_input)
+        self.input_3_butter_bnm_label.setFont(font_input_label)
+        self.input_3_butter_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_3_butter_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_3_butter_bnm.setFixedWidth(100)
+        self.input_3_butter_bnm.setFixedHeight(40)
+        self.input_3_butter_bnm.hide()
+        self.input_3_butter_bnm_label.hide()
+        bottom_layout.addWidget(self.input_3_butter_bnm_label, 15, 1, )
+        bottom_layout.addWidget(self.input_3_butter_bnm, 15, 2, alignment=Qt.AlignLeft)
+
+        # Input 4
+        self.input_4_butter_blm_label = QLabel("Blueberry muffins:")
+        self.input_4_butter_blm = QSpinBox()
+        self.input_4_butter_blm.setFont(font_input)
+        self.input_4_butter_blm_label.setFont(font_input_label)
+        self.input_4_butter_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_4_butter_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_4_butter_blm.setFixedWidth(100)
+        self.input_4_butter_blm.setFixedHeight(40)
+        self.input_4_butter_blm.hide()
+        self.input_4_butter_blm_label.hide()
+        bottom_layout.addWidget(self.input_4_butter_blm_label, 15, 3, )
+        bottom_layout.addWidget(self.input_4_butter_blm, 15, 4, alignment=Qt.AlignLeft) 
 
         # Input 4
         input_4_ingredients_label = QLabel("Eggs:")
-        self.input_4_ingredients = QSpinBox()
-        self.input_4_ingredients.setFont(font_input)
         input_4_ingredients_label.setFont(font_input_label)
         input_4_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-        self.input_4_ingredients.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_ingredients.setFixedWidth(100)
-        self.input_4_ingredients.setFixedHeight(40)
-        bottom_layout.addWidget(input_4_ingredients_label, 8, 3, )
-        bottom_layout.addWidget(self.input_4_ingredients, 8, 4, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(input_4_ingredients_label, 16, 1, )
+        # Input 1
+        self.input_1_eggs_ccc_label = QLabel("Chocolate chip cookies:")
+        font_input = QFont()
+        font_input.setPointSize(17)
+
+        self.input_1_eggs_ccc_label.setFont(font_input_label)
+        self.input_1_eggs_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        self.input_1_eggs_ccc = QSpinBox()
+        self.input_1_eggs_ccc.setFont(font_input)
+        self.input_1_eggs_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_1_eggs_ccc.setFixedWidth(100)
+        self.input_1_eggs_ccc.setFixedHeight(40)
+        bottom_layout.addWidget(self.input_1_eggs_ccc_label, 17, 1, )
+        bottom_layout.addWidget(self.input_1_eggs_ccc, 17, 2, alignment=Qt.AlignLeft)
+
+        # Input 2
+        self.input_2_eggs_orc_label = QLabel("Oatmeal raisin cookies:")
+        self.input_2_eggs_orc = QSpinBox()
+        self.input_2_eggs_orc.setFont(font_input)
+        self.input_2_eggs_orc_label.setFont(font_input_label)
+        self.input_2_eggs_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_eggs_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_2_eggs_orc.setFixedWidth(100)
+        self.input_2_eggs_orc.setFixedHeight(40)
+        self.input_2_eggs_orc.hide()
+        self.input_2_eggs_orc_label.hide()
+        bottom_layout.addWidget(self.input_2_eggs_orc_label, 17, 3, )
+        bottom_layout.addWidget(self.input_2_eggs_orc, 17, 4, alignment=Qt.AlignLeft)
+
+        # Input 3
+        self.input_3_eggs_bnm_label = QLabel("Banana nut muffins:")
+        self.input_3_eggs_bnm = QSpinBox()
+        self.input_3_eggs_bnm.setFont(font_input)
+        self.input_3_eggs_bnm_label.setFont(font_input_label)
+        self.input_3_eggs_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_3_eggs_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_3_eggs_bnm.setFixedWidth(100)
+        self.input_3_eggs_bnm.setFixedHeight(40)
+        self.input_3_eggs_bnm.hide()
+        self.input_3_eggs_bnm_label.hide()
+        bottom_layout.addWidget(self.input_3_eggs_bnm_label, 18, 1, )
+        bottom_layout.addWidget(self.input_3_eggs_bnm, 18, 2, alignment=Qt.AlignLeft)
+
+        # Input 4
+        self.input_4_eggs_blm_label = QLabel("Blueberry muffins:")
+        self.input_4_eggs_blm = QSpinBox()
+        self.input_4_eggs_blm.setFont(font_input)
+        self.input_4_eggs_blm_label.setFont(font_input_label)
+        self.input_4_eggs_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_4_eggs_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        self.input_4_eggs_blm.setFixedWidth(100)
+        self.input_4_eggs_blm.setFixedHeight(40)
+        self.input_4_eggs_blm.hide()
+        self.input_4_eggs_blm_label.hide()
+        bottom_layout.addWidget(self.input_4_eggs_blm_label, 18, 3, )
+        bottom_layout.addWidget(self.input_4_eggs_blm, 18, 4, alignment=Qt.AlignLeft) 
         
 
 
@@ -551,7 +750,7 @@ class Ui_MainWindow(object):
         font.setPointSize(25)
         ovenTime_list_label.setFont(font)
         ovenTime_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        bottom_layout.addWidget(ovenTime_list_label, 9, 0, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(ovenTime_list_label, 19, 0, alignment=Qt.AlignLeft)
         # Input 1
         self.input_1_ovenTime_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
@@ -564,8 +763,8 @@ class Ui_MainWindow(object):
         self.input_1_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_1_ovenTime.setFixedWidth(100)
         self.input_1_ovenTime.setFixedHeight(40)
-        bottom_layout.addWidget(self.input_1_ovenTime_label, 10, 1, )
-        bottom_layout.addWidget(self.input_1_ovenTime, 10, 2, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(self.input_1_ovenTime_label, 20, 1, )
+        bottom_layout.addWidget(self.input_1_ovenTime, 20, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_ovenTime_label = QLabel("Oatmeal raisin cookies:")
@@ -578,8 +777,8 @@ class Ui_MainWindow(object):
         self.input_2_ovenTime.setFixedHeight(40)
         self.input_2_ovenTime.hide()
         self.input_2_ovenTime_label.hide()
-        bottom_layout.addWidget(self.input_2_ovenTime_label, 10, 3, )
-        bottom_layout.addWidget(self.input_2_ovenTime, 10, 4, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(self.input_2_ovenTime_label, 20, 3, )
+        bottom_layout.addWidget(self.input_2_ovenTime, 20, 4, alignment=Qt.AlignLeft)
 
         # Input 3
         self.input_3_ovenTime_label = QLabel("Banana nut muffins:")
@@ -592,8 +791,8 @@ class Ui_MainWindow(object):
         self.input_3_ovenTime.setFixedHeight(40)
         self.input_3_ovenTime.hide()
         self.input_3_ovenTime_label.hide()
-        bottom_layout.addWidget(self.input_3_ovenTime_label, 11, 1, )
-        bottom_layout.addWidget(self.input_3_ovenTime, 11, 2, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(self.input_3_ovenTime_label, 21, 1, )
+        bottom_layout.addWidget(self.input_3_ovenTime, 21, 2, alignment=Qt.AlignLeft)
 
         # Input 4
         self.input_4_ovenTime_label = QLabel("Blueberry muffins:")
@@ -606,8 +805,8 @@ class Ui_MainWindow(object):
         self.input_4_ovenTime.setFixedHeight(40)
         self.input_4_ovenTime.hide()
         self.input_4_ovenTime_label.hide()
-        bottom_layout.addWidget(self.input_4_ovenTime_label, 11, 3, )
-        bottom_layout.addWidget(self.input_4_ovenTime, 11, 4, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(self.input_4_ovenTime_label, 21, 3, )
+        bottom_layout.addWidget(self.input_4_ovenTime, 21, 4, alignment=Qt.AlignLeft)
 
 
         #Flour in Storage
@@ -616,12 +815,14 @@ class Ui_MainWindow(object):
         font.setPointSize(25)
         global_label.setFont(font)
         global_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        bottom_layout.addWidget(global_label, 12, 0, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(global_label, 22, 0, alignment=Qt.AlignLeft)
         # Input 1
         input_1_flour_label = QLabel("Flour:")
         font_input = QFont()
         font_input.setPointSize(17)
 
+
+    
         input_1_flour_label.setFont(font_input_label)
         input_1_flour_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
         self.input_1_flour = QSpinBox()
@@ -629,8 +830,8 @@ class Ui_MainWindow(object):
         self.input_1_flour.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_1_flour.setFixedWidth(100)
         self.input_1_flour.setFixedHeight(40)
-        bottom_layout.addWidget(input_1_flour_label, 13, 1, )
-        bottom_layout.addWidget(self.input_1_flour, 13, 2, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(input_1_flour_label, 23, 1, )
+        bottom_layout.addWidget(self.input_1_flour, 23, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         input_2_sugar_label = QLabel("Sugar:")
@@ -641,8 +842,8 @@ class Ui_MainWindow(object):
         self.input_2_sugar.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_2_sugar.setFixedWidth(100)
         self.input_2_sugar.setFixedHeight(40)
-        bottom_layout.addWidget(input_2_sugar_label, 13, 3, )
-        bottom_layout.addWidget(self.input_2_sugar, 13, 4, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(input_2_sugar_label, 23, 3, )
+        bottom_layout.addWidget(self.input_2_sugar, 23, 4, alignment=Qt.AlignLeft)
 
         # Input 3
         input_3_eggs_label = QLabel("Eggs:")
@@ -653,8 +854,8 @@ class Ui_MainWindow(object):
         self.input_3_eggs.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_3_eggs.setFixedWidth(100)
         self.input_3_eggs.setFixedHeight(40)
-        bottom_layout.addWidget(input_3_eggs_label, 14, 1, )
-        bottom_layout.addWidget(self.input_3_eggs, 14, 2, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(input_3_eggs_label, 24, 1, )
+        bottom_layout.addWidget(self.input_3_eggs, 24, 2, alignment=Qt.AlignLeft)
 
         # Input 4
         input_4_butter_label = QLabel("Butter:")
@@ -665,8 +866,8 @@ class Ui_MainWindow(object):
         self.input_4_butter.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_4_butter.setFixedWidth(100)
         self.input_4_butter.setFixedHeight(40)
-        bottom_layout.addWidget(input_4_butter_label, 14, 3, )
-        bottom_layout.addWidget(self.input_4_butter, 14, 4, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(input_4_butter_label, 24, 3, )
+        bottom_layout.addWidget(self.input_4_butter, 24, 4, alignment=Qt.AlignLeft)
 
         # Input 5
         input_5_gluten_label = QLabel("Glutten:")
@@ -677,8 +878,8 @@ class Ui_MainWindow(object):
         self.input_5_gluten.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_5_gluten.setFixedWidth(100)
         self.input_5_gluten.setFixedHeight(40)
-        bottom_layout.addWidget(input_5_gluten_label, 15, 1, )
-        bottom_layout.addWidget(self.input_5_gluten, 15, 2, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(input_5_gluten_label, 25, 1, )
+        bottom_layout.addWidget(self.input_5_gluten, 25, 2, alignment=Qt.AlignLeft)
 
         # Input 6
         input_6_oven_capacity_label = QLabel("Oven capacity:")
@@ -689,8 +890,8 @@ class Ui_MainWindow(object):
         self.input_6_oven_capacity.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_6_oven_capacity.setFixedWidth(100)
         self.input_6_oven_capacity.setFixedHeight(40)
-        bottom_layout.addWidget(input_6_oven_capacity_label, 15, 3, )
-        bottom_layout.addWidget(self.input_6_oven_capacity, 15, 4, alignment=Qt.AlignLeft)
+        bottom_layout.addWidget(input_6_oven_capacity_label, 25, 3, )
+        bottom_layout.addWidget(self.input_6_oven_capacity, 25, 4, alignment=Qt.AlignLeft)
 
 
 
@@ -720,7 +921,7 @@ class Ui_MainWindow(object):
             }
         """)
         self.problem1_submit_btn.setCursor(Qt.PointingHandCursor)
-        bottom_layout.addWidget(self.problem1_submit_btn, 20, 5)
+        bottom_layout.addWidget(self.problem1_submit_btn, 26, 5)
         # Add the bottom widget to the problem_1_page layout
         scroll_layout.addWidget(checkbox_widget)
         scroll_layout.addWidget(bottom_widget)

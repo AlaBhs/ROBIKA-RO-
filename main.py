@@ -62,6 +62,16 @@ class MainWindow(QMainWindow):
                 self.ui.input_4_profit.show()
                 self.ui.input_4_ovenTime.show()
                 self.ui.input_4_ovenTime_label.show()
+                self.ui.input_4_flour_blm.show()
+                self.ui.input_4_flour_blm_label.show()
+                self.ui.input_4_butter_blm.show()
+                self.ui.input_4_butter_blm_label.show()
+                self.ui.input_4_sugar_blm.show()
+                self.ui.input_4_sugar_blm_label.show()
+                self.ui.input_4_eggs_blm.show()
+                self.ui.input_4_eggs_blm_label.show()
+
+                
             else:
                 self.ui.input_4_weighting.hide()
                 self.ui.input_4_weighting_label.hide()
@@ -69,6 +79,14 @@ class MainWindow(QMainWindow):
                 self.ui.input_4_profit.hide()
                 self.ui.input_4_ovenTime.hide()
                 self.ui.input_4_ovenTime_label.hide()
+                self.ui.input_4_flour_blm.hide()
+                self.ui.input_4_flour_blm_label.hide()
+                self.ui.input_4_butter_blm.hide()
+                self.ui.input_4_butter_blm_label.hide()
+                self.ui.input_4_sugar_blm.hide()
+                self.ui.input_4_sugar_blm_label.hide()
+                self.ui.input_4_eggs_blm.hide()
+                self.ui.input_4_eggs_blm_label.hide()
     def on_checkbox_3_clicked(self):
             # Show or hide input field based on the check box state
             if self.ui.checkbox_3.isChecked():
@@ -78,6 +96,14 @@ class MainWindow(QMainWindow):
                 self.ui.input_3_profit.show()
                 self.ui.input_3_ovenTime.show()
                 self.ui.input_3_ovenTime_label.show()
+                self.ui.input_3_flour_bnm.show()
+                self.ui.input_3_flour_bnm_label.show()
+                self.ui.input_3_sugar_bnm.show()
+                self.ui.input_3_sugar_bnm_label.show()
+                self.ui.input_3_butter_bnm.show()
+                self.ui.input_3_butter_bnm_label.show()
+                self.ui.input_3_eggs_bnm.show()
+                self.ui.input_3_eggs_bnm_label.show()
             else:
                 self.ui.input_3_weighting.hide()
                 self.ui.input_3_weighting_label.hide()
@@ -85,6 +111,14 @@ class MainWindow(QMainWindow):
                 self.ui.input_3_profit.hide()
                 self.ui.input_3_ovenTime.hide()
                 self.ui.input_3_ovenTime_label.hide()
+                self.ui.input_3_flour_bnm.hide()
+                self.ui.input_3_flour_bnm_label.hide()
+                self.ui.input_3_sugar_bnm.hide()
+                self.ui.input_3_sugar_bnm_label.hide()
+                self.ui.input_3_butter_bnm.hide()
+                self.ui.input_3_butter_bnm_label.hide()
+                self.ui.input_3_eggs_bnm.hide()
+                self.ui.input_3_eggs_bnm_label.hide()
     def on_checkbox_1_clicked(self):
             # Show or hide input field based on the check box state
             if self.ui.checkbox_1.isChecked():
@@ -94,6 +128,15 @@ class MainWindow(QMainWindow):
                 self.ui.input_1_profit.show()
                 self.ui.input_1_ovenTime.show()
                 self.ui.input_1_ovenTime_label.show()
+                self.ui.input_1_flour_ccc.show()
+                self.ui.input_1_flour_ccc_label.show()
+                self.ui.input_1_eggs_ccc.show()
+                self.ui.input_1_eggs_ccc_label.show()
+                self.ui.input_1_butter_ccc.show()
+                self.ui.input_1_butter_ccc_label.show()
+                self.ui.input_1_sugar_ccc.show()
+                self.ui.input_1_sugar_ccc_label.show()
+                
             else:
                 self.ui.input_1_weighting.hide()
                 self.ui.input_1_weighting_label.hide()
@@ -101,6 +144,14 @@ class MainWindow(QMainWindow):
                 self.ui.input_1_profit.hide()
                 self.ui.input_1_ovenTime.hide()
                 self.ui.input_1_ovenTime_label.hide()
+                self.ui.input_1_flour_ccc.hide()
+                self.ui.input_1_flour_ccc_label.hide()
+                self.ui.input_1_eggs_ccc.hide()
+                self.ui.input_1_eggs_ccc_label.hide()
+                self.ui.input_1_butter_ccc.hide()
+                self.ui.input_1_butter_ccc_label.hide()
+                self.ui.input_1_sugar_ccc.hide()
+                self.ui.input_1_sugar_ccc_label.hide()
     def on_checkbox_2_clicked(self):
             # Show or hide input field based on the check box state
             if self.ui.checkbox_2.isChecked():
@@ -110,6 +161,14 @@ class MainWindow(QMainWindow):
                 self.ui.input_2_profit.show()
                 self.ui.input_2_ovenTime.show()
                 self.ui.input_2_ovenTime_label.show()
+                self.ui.input_2_flour_orc.show()
+                self.ui.input_2_flour_orc_label.show()
+                self.ui.input_2_sugar_orc.show()
+                self.ui.input_2_sugar_orc_label.show()
+                self.ui.input_2_butter_orc.show()
+                self.ui.input_2_butter_orc_label.show()
+                self.ui.input_2_eggs_orc.show()
+                self.ui.input_2_eggs_orc_label.show()
             else:
                 self.ui.input_2_weighting.hide()
                 self.ui.input_2_weighting_label.hide()
@@ -117,6 +176,14 @@ class MainWindow(QMainWindow):
                 self.ui.input_2_profit.hide()
                 self.ui.input_2_ovenTime.hide()
                 self.ui.input_2_ovenTime_label.hide()
+                self.ui.input_2_flour_orc.hide()
+                self.ui.input_2_flour_orc_label.hide()
+                self.ui.input_2_sugar_orc.hide()
+                self.ui.input_2_sugar_orc_label.hide()
+                self.ui.input_2_butter_orc.hide()
+                self.ui.input_2_butter_orc_label.hide()
+                self.ui.input_2_eggs_orc.hide()
+                self.ui.input_2_eggs_orc_label.hide()
     def on_btn_page_clicked(self):
         sender = self.sender()
         # Set all button stylesheets to default
@@ -199,28 +266,163 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentWidget(self.ui.solution_2_page)
 
     def on_btn_problem_1_submit_clicked(self):
-        # Read the values entered in the input widgets
-        input_1_value = self.ui.input_1_profit.value()
-        input_2_value = self.ui.input_2_profit.value()
-        input_3_value = self.ui.input_3_profit.value()
-        input_4_value = self.ui.input_4_profit.value()
+        input_1_profit = -1
+        input_1_weighting = -1
+        input_1_flour_ccc = -1
+        input_1_butter_ccc = -1
+        input_1_sugar_ccc = -1
+        input_1_eggs_ccc = -1
+        input_1_ovenTime = -1
+
+        input_2_profit = -1
+        input_2_weighting = -1
+        input_2_flour_orc = -1
+        input_2_butter_orc = -1
+        input_2_sugar_orc = -1
+        input_2_eggs_orc = -1
+        input_2_ovenTime = -1
+
+        input_3_profit = -1
+        input_3_weighting = -1
+        input_3_flour_bnm = -1
+        input_3_butter_bnm = -1
+        input_3_sugar_bnm = -1
+        input_3_eggs_bnm = -1
+        input_3_ovenTime = -1
+
+        input_4_profit = -1
+        input_4_weighting = -1
+        input_4_flour_blm = -1
+        input_4_butter_blm = -1
+        input_4_sugar_blm = -1
+        input_4_eggs_blm = -1
+        input_4_ovenTime = -1
+        if self.ui.checkbox_1.isChecked():
+            input_1_profit = self.ui.input_1_profit.value()
+            input_1_weighting = self.ui.input_1_weighting.value()
+            input_1_flour_ccc = self.ui.input_1_flour_ccc.value()
+            input_1_butter_ccc = self.ui.input_1_butter_ccc.value()
+            input_1_sugar_ccc = self.ui.input_1_sugar_ccc.value()
+            input_1_eggs_ccc = self.ui.input_1_eggs_ccc.value()
+            input_1_ovenTime = self.ui.input_1_ovenTime.value()
         
-        self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res1_page)
+        if self.ui.checkbox_2.isChecked():
+            input_2_profit = self.ui.input_2_profit.value()
+            input_2_weighting = self.ui.input_2_weighting.value()
+            input_2_flour_orc = self.ui.input_2_flour_orc.value()
+            input_2_butter_orc = self.ui.input_2_butter_orc.value()
+            input_2_sugar_orc = self.ui.input_2_sugar_orc.value()
+            input_2_eggs_orc = self.ui.input_2_eggs_orc.value()
+            input_2_ovenTime = self.ui.input_2_ovenTime.value()
+        
+        if self.ui.checkbox_3.isChecked():
+            input_3_profit = self.ui.input_3_profit.value()
+            input_3_weighting = self.ui.input_3_weighting.value()
+            input_3_flour_bnm = self.ui.input_3_flour_bnm.value()
+            input_3_butter_bnm = self.ui.input_3_butter_bnm.value()
+            input_3_sugar_bnm = self.ui.input_3_sugar_bnm.value()
+            input_3_eggs_bnm = self.ui.input_3_eggs_bnm.value()
+            input_3_ovenTime = self.ui.input_3_ovenTime.value()
+        
+        if self.ui.checkbox_4.isChecked():
+            input_4_profit = self.ui.input_4_profit.value()
+            input_4_weighting = self.ui.input_4_weighting.value()
+            input_4_flour_blm = self.ui.input_4_flour_blm.value()
+            input_4_butter_blm = self.ui.input_4_butter_blm.value()
+            input_4_sugar_blm = self.ui.input_4_sugar_blm.value()
+            input_4_eggs_blm = self.ui.input_4_eggs_blm.value()
+            input_4_ovenTime = self.ui.input_4_ovenTime.value()
+
+        input_1_flour = self.ui.input_1_flour.value()
+        input_2_sugar = self.ui.input_2_sugar.value()
+        input_3_eggs = self.ui.input_3_eggs.value()
+        input_4_butter = self.ui.input_4_butter.value()
+        input_5_gluten = self.ui.input_5_gluten.value()
+        input_6_oven_capacity = self.ui.input_6_oven_capacity.value()
+
+        # Create lists for each input type and append the values
+        profit_list = [input_1_profit, input_2_profit, input_3_profit, input_4_profit]
+        weighting_list = [input_1_weighting, input_2_weighting, input_3_weighting, input_4_weighting]
+        flour_list = [input_1_flour_ccc, input_2_flour_orc, input_3_flour_bnm, input_4_flour_blm]
+        butter_list = [input_1_butter_ccc, input_2_butter_orc, input_3_butter_bnm, input_4_butter_blm]
+        sugar_list = [input_1_sugar_ccc, input_2_sugar_orc, input_3_sugar_bnm, input_4_sugar_blm]
+        eggs_list = [input_1_eggs_ccc, input_2_eggs_orc, input_3_eggs_bnm, input_4_eggs_blm]
+        oven_time_list = [input_1_ovenTime, input_2_ovenTime, input_3_ovenTime, input_4_ovenTime]
+        global_inputs_list =[input_1_flour,input_2_sugar,input_3_eggs,input_4_butter,input_5_gluten,input_6_oven_capacity]
+
+
+
+
+
+        
+        
+        
 
         # Save the values in a MySQL database
-        self.save_to_database("problem 1", input_1_value, input_2_value, input_3_value, input_4_value, "this is a result")
+        # self.save_to_database("problem 1", input_1_value, input_2_value, input_3_value, input_4_value, "this is a result")
 
         # Print the values
-        print("Input 1 problem 1:", input_1_value)
-        print("Input 2 problem 1:", input_2_value)
-        print("Input 3 problem 1:", input_3_value)
-        print("Input 4 problem 1:", input_4_value)
+        # print("Input 1 problem 1:", input_1_value)
+        # print("Input 2 problem 1:", input_2_value)
+        # print("Input 3 problem 1:", input_3_value)
+        # print("Input 4 problem 1:", input_4_value)
 
-        # Reset the input values
-        self.ui.input_1.setValue(0)
-        self.ui.input_2.setValue(0)
-        self.ui.input_3.setValue(0)
-        self.ui.input_4.setValue(0)
+        # Reset input values for product 1
+        self.ui.input_1_profit.setValue(0)
+        self.ui.input_1_weighting.setValue(0)
+        self.ui.input_1_flour_ccc.setValue(0)
+        self.ui.input_1_butter_ccc.setValue(0)
+        self.ui.input_1_sugar_ccc.setValue(0)
+        self.ui.input_1_eggs_ccc.setValue(0)
+        self.ui.input_1_ovenTime.setValue(0)
+
+        # Reset input values for product 2
+        self.ui.input_2_profit.setValue(0)
+        self.ui.input_2_weighting.setValue(0)
+        self.ui.input_2_flour_orc.setValue(0)
+        self.ui.input_2_butter_orc.setValue(0)
+        self.ui.input_2_sugar_orc.setValue(0)
+        self.ui.input_2_eggs_orc.setValue(0)
+        self.ui.input_2_ovenTime.setValue(0)
+
+        # Reset input values for product 3
+        self.ui.input_3_profit.setValue(0)
+        self.ui.input_3_weighting.setValue(0)
+        self.ui.input_3_flour_bnm.setValue(0)
+        self.ui.input_3_butter_bnm.setValue(0)
+        self.ui.input_3_sugar_bnm.setValue(0)
+        self.ui.input_3_eggs_bnm.setValue(0)
+        self.ui.input_3_ovenTime.setValue(0)
+
+        # Reset input values for product 4
+        self.ui.input_4_profit.setValue(0)
+        self.ui.input_4_weighting.setValue(0)
+        self.ui.input_4_flour_blm.setValue(0)
+        self.ui.input_4_butter_blm.setValue(0)
+        self.ui.input_4_sugar_blm.setValue(0)
+        self.ui.input_4_eggs_blm.setValue(0)
+        self.ui.input_4_ovenTime.setValue(0)
+
+        # Reset input values for global inputs
+        self.ui.input_1_flour.setValue(0)
+        self.ui.input_2_sugar.setValue(0)
+        self.ui.input_3_eggs.setValue(0)
+        self.ui.input_4_butter.setValue(0)
+        self.ui.input_5_gluten.setValue(0)
+        self.ui.input_6_oven_capacity.setValue(0)
+
+        print("Profit List:", profit_list)
+        print("Weighting List:", weighting_list)
+        print("Flour List:", flour_list)
+        print("Butter List:", butter_list)
+        print("Sugar List:", sugar_list)
+        print("Eggs List:", eggs_list)
+        print("Oven Time List:", oven_time_list)
+        print("General List:", global_inputs_list)
+
+
+        # redirection to result page
+        self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res1_page)
 
     def on_btn_problem_2_submit_clicked(self):
         # Read the values entered in the input widgets
