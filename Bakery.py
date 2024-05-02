@@ -1,5 +1,6 @@
 import gurobipy as gp
-from gurobipy import GRB
+from gurobipy import GRB , GurobiError
+from Gurobi import RunPLSolution
 
 def optimize_production(profit_coefficients, resource_coefficients, resource_limits, **kwargs):
     default_params = {
@@ -51,22 +52,11 @@ def optimize_production(profit_coefficients, resource_coefficients, resource_lim
     # Constraints: Dietary Restrictions
     if dietary_restrictions is not None:
         model.addConstr(x[1] + x[3] >= dietary_restrictions)
+    status,params, res=RunPLSolution(model,x,goods)
+    return status,params, res
 
-    # Solve
-    model.optimize()
-    Optimal_solution=[]
-    # Print solution
-    if model.status == GRB.OPTIMAL:
-        print("Optimal Solution:")
-        for i in goods:
-            Optimal_solution.append(x[i].x)
-            print(f"Number of goods produced for item {i+1}: {x[i].x}")
-        print(f"Total Profit: {model.objVal}")
-        return Optimal_solution, model.objVal
-    else:
-        print("No solution found.")
-        return Optimal_solution, None
-'''
+
+
 # Example Data
 profit_coefficients = [0.5, 0.4, 0.6, 0.7]  # Profit per unit
 resource_coefficients = [[0.1, 0.2, 0.15, 0.25],  # Flour coefficients for each good
@@ -88,8 +78,8 @@ resource_limits = [100, 80, 60]  # Increased resource limits for Flour, Sugar, E
 minimum_production = [5, 2, 0, 0]  # Lowered minimum production requirements
 oven_capacity = [1, 1, 2, 2, 6000]  # Oven slot usage per unit
 dietary_restrictions = 5  # Lowered dietary restrictions
-
+'''
 # Solve
-params, res =optimize_production(profit_coefficients, resource_coefficients, resource_limits)
+status,params, res =optimize_production(profit_coefficients, resource_coefficients, resource_limits)
 # with optimal
-params, res =optimize_production(profit_coefficients, resource_coefficients, resource_limits, minimum_production=minimum_production, oven_capacity=oven_capacity, dietary_restrictions=dietary_restrictions)
+status,params, res =optimize_production(profit_coefficients, resource_coefficients, resource_limits, minimum_production=minimum_production, oven_capacity=oven_capacity, dietary_restrictions=dietary_restrictions)

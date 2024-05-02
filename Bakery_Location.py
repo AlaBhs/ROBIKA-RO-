@@ -1,6 +1,7 @@
 import gurobipy as gp
 from gurobipy import GRB
 import numpy as np
+from Gurobi import RunBinaryPLSolution
 
 def optimize_bakery_location(I, J, Q, C, D, Dmax, DB, Dmin, time_limit):
     # Initialize the model
@@ -39,28 +40,8 @@ def optimize_bakery_location(I, J, Q, C, D, Dmax, DB, Dmin, time_limit):
     model.Params.TimeLimit = time_limit
 
     # Optimize the model
-    model.optimize()
-
-    # Get the solution
-    solution = {}
-    if model.status == GRB.OPTIMAL:
-        print("Optimal solution found:")
-        for j in range(len(J)):
-            if x[j].x > 0.5:
-                solution[J[j]] = True
-                print(f"Bakery at location {J[j]}")
-            else:
-                solution[J[j]] = False
-    else:
-        print("No optimal solution found. Returning best feasible solution found so far:")
-        for j in range(len(J)):
-            if x[j].x > 0.5:
-                solution[J[j]] = True
-                print(f"Bakery at location {J[j]}")
-            else:
-                solution[J[j]] = False
-
-    return solution
+    status,params, res=RunBinaryPLSolution(model,J,x,len(J))
+    return status,params, res
 
 # Define the data
 I = ['Neighborhood A', 'Neighborhood B', 'Neighborhood C']  # Set of neighborhoods
