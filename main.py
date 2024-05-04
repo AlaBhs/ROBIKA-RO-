@@ -218,7 +218,7 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_3)
             # fetch the data and set the tables here
             self.populate_table1()
-            # self.populate_table2()
+            self.populate_table2()
     # Fetch data from the database
     def fetch_data(self, table, orderby):
         try:

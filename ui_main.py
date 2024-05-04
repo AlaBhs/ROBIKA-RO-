@@ -1246,7 +1246,51 @@ class Ui_MainWindow(object):
 
         #-----------------------------------table 2 ----------------------------------
 
+        # Label table 1
+        label_table2 = QLabel(self.page_3)
+        label_table2.setObjectName("label_table2")
+        label_table2.setText("Table Of Build Bakery Problem:")
+        font = QFont()
+        font.setPointSize(17)  # Set font size to 10 points
+        label_table2.setFont(font)
+        label_table2.setStyleSheet("color: #FFF;")
+        label_table2.setAlignment(Qt.AlignCenter)
+        self.verticalLayout_8.addWidget(label_table2)
 
+        # Table
+        self.table2 = QTableWidget(self.page_3)
+        self.table2.setColumnCount(12) 
+        # Set column widths
+        self.table2.setColumnWidth(0, 8)  # "ID",
+        self.table2.setColumnWidth(1, 50)  # "Problem Name",
+        self.table2.setColumnWidth(2, 85)  # "Profit", 
+        self.table2.setColumnWidth(3, 85)  # "Weighting", 
+        self.table2.setColumnWidth(4, 85)  # "Flour list",     
+        self.table2.setColumnWidth(5, 85)  # "Butter",
+        self.table2.setColumnWidth(6, 85)  # "Sugar",
+        self.table2.setColumnWidth(7, 85)  # "Eggs",
+        self.table2.setColumnWidth(8, 85)  # "Oven Time",
+        self.table2.setColumnWidth(9, 80)  # "General list",
+        self.table2.setColumnWidth(10, 70)  # "Created In",
+        self.table2.setColumnWidth(11, 250)  # "Gurobi Result",
+        # Set font size for table
+        font = QFont()
+        font.setPointSize(8)  # Set font size to 10 points
+        self.table2.setFont(font)
+
+        # Set background color for cells
+        self.table2.setStyleSheet(
+                                "QTableWidget::item { background-color: #ffffff; }"  # Set background color for cells
+                                "QTableWidget::item:selected { background-color: #a6a6a6; }")  # Set background color for selected cells
+
+        # Set row heights
+        for row in range(self.table2.rowCount()):
+            self.table2.setRowHeight(row, 40)  # Set height for each row
+        # Set column headers
+        self.table2.setHorizontalHeaderLabels(["ID","Name","Neighborhoods", "Bakeries", "Capacities", "Costs", "Distances", "Distances min", "Distances max", "Distances bakeries", "Created In", "Gurobi Result"])
+
+
+        self.verticalLayout_8.addWidget(self.table2)
 
 
 
