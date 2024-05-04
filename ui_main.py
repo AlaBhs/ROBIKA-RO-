@@ -939,7 +939,7 @@ class Ui_MainWindow(object):
         image_label_2 = QLabel()
 
         # Load the image from file
-        pixmap_2 = QPixmap("Assets/problem1.png")
+        pixmap_2 = QPixmap("Assets/problem_build_bakery.png")
 
         # Set the pixmap to the label
         image_label_2.setPixmap(pixmap_2)
@@ -964,63 +964,62 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.addWidget(scroll_area_2)
 
         # Create a bottom widget to contain input widgets
-        bottom_widget_2 = QWidget()
+        self.bottom_widget_2 = QWidget()
 
         # Create a layout for the bottom widget
-        bottom_layout_2 = QGridLayout(bottom_widget_2)
+        self.bottom_layout_2 = QGridLayout(self.bottom_widget_2)
 
         # Input 1
-        input_1_label_2 = QLabel("Input 1:")
+        self.input_1_label_2 = QLabel("Number of neighborhoods:")
         font_input_2 = QFont()
         font_input_2.setPointSize(17)
         font_2 = QFont()
-        font_2.setPointSize(25)
-        input_1_label_2.setFont(font_2)
-        input_1_label_2.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
+        font_2.setPointSize(18)
+        self.input_1_label_2.setFont(font_2)
+        self.input_1_label_2.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
         self.input_1_2 = QSpinBox()
         self.input_1_2.setFont(font_input_2)
         self.input_1_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_1_2.setFixedWidth(100)
         self.input_1_2.setFixedHeight(40)
-        bottom_layout_2.addWidget(input_1_label_2, 0, 0, alignment=Qt.AlignRight)
-        bottom_layout_2.addWidget(self.input_1_2, 0, 1, alignment=Qt.AlignLeft)
+        self.bottom_layout_2.addWidget(self.input_1_label_2, 0, 1, alignment=Qt.AlignRight)
+        self.bottom_layout_2.addWidget(self.input_1_2, 0, 2, alignment=Qt.AlignLeft)
 
         # Input 2
-        input_2_label_2 = QLabel("Input 2:")
+        self.input_2_label_2 = QLabel("Number of locations:")
         self.input_2_2 = QSpinBox()
         self.input_2_2.setFont(font_input_2)
-        input_2_label_2.setFont(font_2)
-        input_2_label_2.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        self.input_2_label_2.setFont(font_2)
+        self.input_2_label_2.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
         self.input_2_2.setFixedWidth(100)
         self.input_2_2.setFixedHeight(40)
-        bottom_layout_2.addWidget(input_2_label_2, 0, 2, alignment=Qt.AlignRight)
-        bottom_layout_2.addWidget(self.input_2_2, 0, 3, alignment=Qt.AlignLeft)
+        self.bottom_layout_2.addWidget(self.input_2_label_2, 0, 3, alignment=Qt.AlignRight)
+        self.bottom_layout_2.addWidget(self.input_2_2, 0, 4, alignment=Qt.AlignLeft)
+        # enter button
+        self.problem2_enter_btn = QPushButton("Enter")
+        self.problem2_enter_btn.setStyleSheet("background-color: #F0F0F0;")
+        self.problem2_enter_btn.setFixedWidth(100)
+        self.problem2_enter_btn.setFixedHeight(40)
+        self.problem2_enter_btn.setStyleSheet("""
+            QPushButton {
+                color: #FFF;
+                background-color: blue; /* Set background color */
+                padding: 10px; /* Set padding */
+                border-radius: 10px;
+            }
 
-        # Input 3
-        input_3_label_2 = QLabel("Input 3:")
-        self.input_3_2 = QSpinBox()
-        self.input_3_2.setFont(font_input_2)
-        input_3_label_2.setFont(font_2)
-        input_3_label_2.setStyleSheet("color: #FFF;padding-bottom:5px;")
-        self.input_3_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_2.setFixedWidth(100)
-        self.input_3_2.setFixedHeight(40)
-        bottom_layout_2.addWidget(input_3_label_2, 1, 0, alignment=Qt.AlignRight)
-        bottom_layout_2.addWidget(self.input_3_2, 1, 1, alignment=Qt.AlignLeft)
+            QPushButton:hover {
+                background-color: #fff; /* Change background color on hover */
+                color: blue;
+            }
 
-        # Input 4
-        input_4_label_2 = QLabel("Input 4:")
-        self.input_4_2 = QSpinBox()
-        self.input_4_2.setFont(font_input_2)
-        input_4_label_2.setFont(font_2)
-        input_4_label_2.setStyleSheet("color: #FFF;padding-bottom:5px;")
-        self.input_4_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_2.setFixedWidth(100)
-        self.input_4_2.setFixedHeight(40)
-        bottom_layout_2.addWidget(input_4_label_2, 1, 2, alignment=Qt.AlignRight)
-        bottom_layout_2.addWidget(self.input_4_2, 1, 3, alignment=Qt.AlignLeft)
-
+            QPushButton:pressed {
+                border: 2px solid rgba(0, 0, 0, 0.5); /* Add shadow effect when pressed */
+            }
+        """)
+        self.problem2_enter_btn.setCursor(Qt.PointingHandCursor)
+        self.bottom_layout_2.addWidget(self.problem2_enter_btn, 1, 5, alignment=Qt.AlignRight)
         # Submit button
         self.problem2_submit_btn = QPushButton("Submit")
         self.problem2_submit_btn.setStyleSheet("background-color: #F0F0F0;")
@@ -1043,9 +1042,10 @@ class Ui_MainWindow(object):
             }
         """)
         self.problem2_submit_btn.setCursor(Qt.PointingHandCursor)
-        bottom_layout_2.addWidget(self.problem2_submit_btn, 2, 3, alignment=Qt.AlignRight)
+        self.problem2_submit_btn.hide()
+        self.bottom_layout_2.addWidget(self.problem2_submit_btn, 100, 5, alignment=Qt.AlignRight)
         # Add the bottom widget to the problem_2_page layout
-        scroll_layout_2.addWidget(bottom_widget_2)
+        scroll_layout_2.addWidget(self.bottom_widget_2)
         self.stackedWidget.addWidget(self.problem_2_page)
 
 
@@ -1190,27 +1190,42 @@ class Ui_MainWindow(object):
         label.setObjectName("label")
         label.setText("Your history:")
         font = QFont()
-        font.setPointSize(20)  # Set font size to 10 points
+        font.setPointSize(22)  # Set font size to 10 points
         label.setFont(font)
         label.setStyleSheet("color: #FFF;")
         label.setAlignment(Qt.AlignLeft)
         self.verticalLayout_8.addWidget(label)
 
+        # Label table 1
+        label_table1 = QLabel(self.page_3)
+        label_table1.setObjectName("label_table1")
+        label_table1.setText("Table Of Bakery Problem:")
+        font = QFont()
+        font.setPointSize(17)  # Set font size to 10 points
+        label_table1.setFont(font)
+        label_table1.setStyleSheet("color: #FFF;")
+        label_table1.setAlignment(Qt.AlignCenter)
+        self.verticalLayout_8.addWidget(label_table1)
+
         # Table
         self.table = QTableWidget(self.page_3)
-        self.table.setColumnCount(8) 
+        self.table.setColumnCount(12) 
         # Set column widths
-        self.table.setColumnWidth(0, 50)  # ID column
-        self.table.setColumnWidth(1, 130)  # Problem name column
-        self.table.setColumnWidth(2, 70)  # Input 1 column
-        self.table.setColumnWidth(3, 70)  # Input 2 column
-        self.table.setColumnWidth(4, 70)  # Input 3 column
-        self.table.setColumnWidth(5, 70)  # Input 4 column
-        self.table.setColumnWidth(6, 460)  # Result column
-        self.table.setColumnWidth(7, 200)  # Created In column
+        self.table.setColumnWidth(0, 8)  # "ID",
+        self.table.setColumnWidth(1, 50)  # "Problem Name",
+        self.table.setColumnWidth(2, 85)  # "Profit", 
+        self.table.setColumnWidth(3, 85)  # "Weighting", 
+        self.table.setColumnWidth(4, 85)  # "Flour list",     
+        self.table.setColumnWidth(5, 85)  # "Butter",
+        self.table.setColumnWidth(6, 85)  # "Sugar",
+        self.table.setColumnWidth(7, 85)  # "Eggs",
+        self.table.setColumnWidth(8, 85)  # "Oven Time",
+        self.table.setColumnWidth(9, 80)  # "General list",
+        self.table.setColumnWidth(10, 70)  # "Created In",
+        self.table.setColumnWidth(11, 250)  # "Gurobi Result",
         # Set font size for table
         font = QFont()
-        font.setPointSize(15)  # Set font size to 10 points
+        font.setPointSize(8)  # Set font size to 10 points
         self.table.setFont(font)
 
         # Set background color for cells
@@ -1220,12 +1235,20 @@ class Ui_MainWindow(object):
 
         # Set row heights
         for row in range(self.table.rowCount()):
-            self.table.setRowHeight(row, 60)  # Set height for each row
+            self.table.setRowHeight(row, 40)  # Set height for each row
         # Set column headers
-        self.table.setHorizontalHeaderLabels(["ID","Problem Name", "Input 1", "Input 2", "Input 3", "Input 4","Gurobi Result","Created In"])
+        self.table.setHorizontalHeaderLabels(["ID","Name", "Profit", "Weighting", "Flour list", "Butter", "Sugar", "Eggs", "Oven Time", "General list", "Created In", "Gurobi Result"])
 
 
         self.verticalLayout_8.addWidget(self.table)
+
+
+
+        #-----------------------------------table 2 ----------------------------------
+
+
+
+
 
         self.stackedWidget.addWidget(self.page_3)
 
