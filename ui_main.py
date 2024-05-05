@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt,QSize
-from PyQt5.QtWidgets import QApplication, QMainWindow,QSpinBox,QCheckBox,QGridLayout, QScrollArea, QWidget,QTableWidget,QTableWidgetItem, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFrame, QStackedWidget, QSizePolicy ,QSpacerItem
+from PyQt5.QtWidgets import QApplication, QMainWindow,QDoubleSpinBox,QSpinBox,QCheckBox,QGridLayout, QScrollArea, QWidget,QTableWidget,QTableWidgetItem, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFrame, QStackedWidget, QSizePolicy ,QSpacerItem
 from PyQt5.QtGui import QFont,QIcon,QPixmap
 
 class Ui_MainWindow(object):
@@ -170,13 +170,13 @@ class Ui_MainWindow(object):
         self.label_welcome = QLabel(self.page_welcome)
         self.label_welcome.setObjectName("label_welcome")
         font = QFont()
-        font.setPointSize(70)
+        font.setPointSize(60)
         self.label_welcome.setFont(font)
         self.label_welcome.setStyleSheet("color: #FFF;")
         self.label_welcome.setAlignment(Qt.AlignCenter)
         self.verticalLayout_7.addWidget(self.label_welcome)
         font1 = QFont()      
-        font1.setPointSize(40)
+        font1.setPointSize(30)
         # Text label
         self.label_instruction = QLabel(self.page_welcome)
         self.label_instruction.setObjectName("label_instruction")
@@ -309,7 +309,7 @@ class Ui_MainWindow(object):
         
 
         checkbox_font = QFont()
-        checkbox_font.setPointSize(22)
+        checkbox_font.setPointSize(20)
 
 
         check_ccc_label = QLabel("Chocolate chip cookies: ")
@@ -355,34 +355,40 @@ class Ui_MainWindow(object):
         # Profit list
         profit_list_label = QLabel("Profit: ")
         font = QFont()
-        font.setPointSize(25)
+        font.setPointSize(20)
         profit_list_label.setFont(font)
         profit_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
         bottom_layout.addWidget(profit_list_label, 0, 0, alignment=Qt.AlignLeft)
         # Input 1
         self.input_1_profit_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
-        font_input.setPointSize(15)
+        font_input.setPointSize(12)
         font_input_label = QFont()
-        font_input_label.setPointSize(17)
+        font_input_label.setPointSize(14)
         self.input_1_profit_label.setFont(font_input_label)
         self.input_1_profit_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_profit = QSpinBox()
+        self.input_1_profit = QDoubleSpinBox()
         self.input_1_profit.setFont(font_input)
         self.input_1_profit.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_profit.setFixedWidth(100)
+        self.input_1_profit.setRange(0.0, 100000.0)  # Set the range of values as needed
+        self.input_1_profit.setSingleStep(0.1)  # Set the step size
+        self.input_1_profit.setSuffix(" dt")
+        self.input_1_profit.setFixedWidth(150)
         self.input_1_profit.setFixedHeight(40)
         bottom_layout.addWidget(self.input_1_profit_label, 1, 1, )
         bottom_layout.addWidget(self.input_1_profit, 1, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_profit_label = QLabel("Oatmeal raisin cookies:")
-        self.input_2_profit = QSpinBox()
+        self.input_2_profit = QDoubleSpinBox()
         self.input_2_profit.setFont(font_input)
         self.input_2_profit_label.setFont(font_input_label)
         self.input_2_profit_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_profit.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_profit.setFixedWidth(100)
+        self.input_2_profit.setRange(0.0, 100000.0)  # Set the range of values as needed
+        self.input_2_profit.setSingleStep(0.1)  # Set the step size
+        self.input_2_profit.setSuffix(" dt")
+        self.input_2_profit.setFixedWidth(150)
         self.input_2_profit.setFixedHeight(40)
         self.input_2_profit_label.hide()
         self.input_2_profit.hide()
@@ -391,12 +397,15 @@ class Ui_MainWindow(object):
 
         # Input 3
         self.input_3_profit_label = QLabel("Banana nut muffins:")
-        self.input_3_profit = QSpinBox()
+        self.input_3_profit = QDoubleSpinBox()
         self.input_3_profit.setFont(font_input)
         self.input_3_profit_label.setFont(font_input_label)
         self.input_3_profit_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_profit.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_profit.setFixedWidth(100)
+        self.input_3_profit.setRange(0.0, 100000.0)  # Set the range of values as needed
+        self.input_3_profit.setSingleStep(0.1)  # Set the step size
+        self.input_3_profit.setSuffix(" dt")
+        self.input_3_profit.setFixedWidth(150)
         self.input_3_profit.setFixedHeight(40)
         self.input_3_profit_label.hide()
         self.input_3_profit.hide()
@@ -405,12 +414,15 @@ class Ui_MainWindow(object):
 
         # Input 4
         self.input_4_profit_label = QLabel("Blueberry muffins:")
-        self.input_4_profit = QSpinBox()
+        self.input_4_profit = QDoubleSpinBox()
         self.input_4_profit.setFont(font_input)
         self.input_4_profit_label.setFont(font_input_label)
         self.input_4_profit_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_profit.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_profit.setFixedWidth(100)
+        self.input_4_profit.setRange(0.0, 100000.0)  # Set the range of values as needed
+        self.input_4_profit.setSingleStep(0.1)  # Set the step size
+        self.input_4_profit.setSuffix(" dt")
+        self.input_4_profit.setFixedWidth(150)
         self.input_4_profit.setFixedHeight(40)
         self.input_4_profit_label.hide()
         self.input_4_profit.hide()
@@ -421,34 +433,40 @@ class Ui_MainWindow(object):
         # Weighting list
         weighting_list_label = QLabel("Weighting: ")
         font = QFont()
-        font.setPointSize(25)
+        font.setPointSize(20)
         weighting_list_label.setFont(font)
         weighting_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
         bottom_layout.addWidget(weighting_list_label, 3, 0, alignment=Qt.AlignLeft)
         # Input 1
         self.input_1_weighting_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
-        font_input.setPointSize(17)
+        font_input.setPointSize(12)
         font = QFont()
-        font.setPointSize(20)
+        font.setPointSize(14)
         self.input_1_weighting_label.setFont(font_input_label)
         self.input_1_weighting_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_weighting = QSpinBox()
+        self.input_1_weighting = QDoubleSpinBox()
         self.input_1_weighting.setFont(font_input)
         self.input_1_weighting.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_weighting.setFixedWidth(100)
+        self.input_1_weighting.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_1_weighting.setSingleStep(0.1)  # Set the step size
+        self.input_1_weighting.setSuffix(" kg")
+        self.input_1_weighting.setFixedWidth(150)
         self.input_1_weighting.setFixedHeight(40)
         bottom_layout.addWidget(self.input_1_weighting_label, 4, 1, )
         bottom_layout.addWidget(self.input_1_weighting, 4, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_weighting_label = QLabel("Oatmeal raisin cookies:")
-        self.input_2_weighting = QSpinBox()
+        self.input_2_weighting = QDoubleSpinBox()
         self.input_2_weighting.setFont(font_input)
         self.input_2_weighting_label.setFont(font_input_label)
         self.input_2_weighting_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_weighting.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_weighting.setFixedWidth(100)
+        self.input_2_weighting.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_2_weighting.setSingleStep(0.1)  # Set the step size
+        self.input_2_weighting.setSuffix(" kg")
+        self.input_2_weighting.setFixedWidth(150)
         self.input_2_weighting.setFixedHeight(40)
         self.input_2_weighting_label.hide()
         self.input_2_weighting.hide()
@@ -457,12 +475,15 @@ class Ui_MainWindow(object):
 
         # Input 3
         self.input_3_weighting_label = QLabel("Banana nut muffins:")
-        self.input_3_weighting = QSpinBox()
+        self.input_3_weighting = QDoubleSpinBox()
         self.input_3_weighting.setFont(font_input)
         self.input_3_weighting_label.setFont(font_input_label)
         self.input_3_weighting_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_weighting.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_weighting.setFixedWidth(100)
+        self.input_3_weighting.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_3_weighting.setSingleStep(0.1)  # Set the step size
+        self.input_3_weighting.setSuffix(" kg")
+        self.input_3_weighting.setFixedWidth(150)
         self.input_3_weighting.setFixedHeight(40)
         self.input_3_weighting_label.hide()
         self.input_3_weighting.hide()
@@ -471,12 +492,15 @@ class Ui_MainWindow(object):
 
         # Input 4
         self.input_4_weighting_label = QLabel("Blueberry muffins:")
-        self.input_4_weighting = QSpinBox()
+        self.input_4_weighting = QDoubleSpinBox()
         self.input_4_weighting.setFont(font_input)
         self.input_4_weighting_label.setFont(font_input_label)
         self.input_4_weighting_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_weighting.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_weighting.setFixedWidth(100)
+        self.input_4_weighting.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_4_weighting.setSingleStep(0.1)  # Set the step size
+        self.input_4_weighting.setSuffix(" kg")
+        self.input_4_weighting.setFixedWidth(150)
         self.input_4_weighting.setFixedHeight(40)
         self.input_4_weighting_label.hide()
         self.input_4_weighting.hide()
@@ -486,40 +510,46 @@ class Ui_MainWindow(object):
         # Ingredients list
         ingredients_list_label = QLabel("Ingredients: ")
         font = QFont()
-        font.setPointSize(25)
+        font.setPointSize(20)
         ingredients_list_label.setFont(font)
         ingredients_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
         bottom_layout.addWidget(ingredients_list_label, 6, 0, alignment=Qt.AlignLeft)
         # Input 1
         input_1_ingredients_label = QLabel("Flour:")
         font_input = QFont()
-        font_input.setPointSize(17)
+        font_input.setPointSize(12)
         input_1_ingredients_label.setFont(font_input_label)
         input_1_ingredients_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
         bottom_layout.addWidget(input_1_ingredients_label, 7, 1, )
         # Input 1
         self.input_1_flour_ccc_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
-        font_input.setPointSize(17)
+        font_input.setPointSize(12)
 
         self.input_1_flour_ccc_label.setFont(font_input_label)
         self.input_1_flour_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_flour_ccc = QSpinBox()
+        self.input_1_flour_ccc = QDoubleSpinBox()
         self.input_1_flour_ccc.setFont(font_input)
         self.input_1_flour_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_flour_ccc.setFixedWidth(100)
+        self.input_1_flour_ccc.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_1_flour_ccc.setSingleStep(0.1)  # Set the step size
+        self.input_1_flour_ccc.setSuffix(" kg")
+        self.input_1_flour_ccc.setFixedWidth(150)
         self.input_1_flour_ccc.setFixedHeight(40)
         bottom_layout.addWidget(self.input_1_flour_ccc_label, 8, 1, )
         bottom_layout.addWidget(self.input_1_flour_ccc, 8, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_flour_orc_label = QLabel("Oatmeal raisin cookies:")
-        self.input_2_flour_orc = QSpinBox()
+        self.input_2_flour_orc = QDoubleSpinBox()
         self.input_2_flour_orc.setFont(font_input)
         self.input_2_flour_orc_label.setFont(font_input_label)
         self.input_2_flour_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_flour_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_flour_orc.setFixedWidth(100)
+        self.input_2_flour_orc.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_2_flour_orc.setSingleStep(0.1)  # Set the step size
+        self.input_2_flour_orc.setSuffix(" kg")
+        self.input_2_flour_orc.setFixedWidth(150)
         self.input_2_flour_orc.setFixedHeight(40)
         self.input_2_flour_orc.hide()
         self.input_2_flour_orc_label.hide()
@@ -528,12 +558,15 @@ class Ui_MainWindow(object):
 
         # Input 3
         self.input_3_flour_bnm_label = QLabel("Banana nut muffins:")
-        self.input_3_flour_bnm = QSpinBox()
+        self.input_3_flour_bnm = QDoubleSpinBox()
         self.input_3_flour_bnm.setFont(font_input)
         self.input_3_flour_bnm_label.setFont(font_input_label)
         self.input_3_flour_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_flour_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_flour_bnm.setFixedWidth(100)
+        self.input_3_flour_bnm.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_3_flour_bnm.setSingleStep(0.1)  # Set the step size
+        self.input_3_flour_bnm.setSuffix(" kg")
+        self.input_3_flour_bnm.setFixedWidth(150)
         self.input_3_flour_bnm.setFixedHeight(40)
         self.input_3_flour_bnm.hide()
         self.input_3_flour_bnm_label.hide()
@@ -542,12 +575,15 @@ class Ui_MainWindow(object):
 
         # Input 4
         self.input_4_flour_blm_label = QLabel("Blueberry muffins:")
-        self.input_4_flour_blm = QSpinBox()
+        self.input_4_flour_blm = QDoubleSpinBox()
         self.input_4_flour_blm.setFont(font_input)
         self.input_4_flour_blm_label.setFont(font_input_label)
         self.input_4_flour_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_flour_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_flour_blm.setFixedWidth(100)
+        self.input_4_flour_blm.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_4_flour_blm.setSingleStep(0.1)  # Set the step size
+        self.input_4_flour_blm.setSuffix(" kg")
+        self.input_4_flour_blm.setFixedWidth(150)
         self.input_4_flour_blm.setFixedHeight(40)
         self.input_4_flour_blm.hide()
         self.input_4_flour_blm_label.hide()
@@ -562,26 +598,32 @@ class Ui_MainWindow(object):
         # Input 1
         self.input_1_sugar_ccc_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
-        font_input.setPointSize(17)
+        font_input.setPointSize(12)
         bottom_layout.addWidget(input_2_ingredients_label, 10, 1, )
         self.input_1_sugar_ccc_label.setFont(font_input_label)
         self.input_1_sugar_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_sugar_ccc = QSpinBox()
+        self.input_1_sugar_ccc = QDoubleSpinBox()
         self.input_1_sugar_ccc.setFont(font_input)
         self.input_1_sugar_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_sugar_ccc.setFixedWidth(100)
+        self.input_1_sugar_ccc.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_1_sugar_ccc.setSingleStep(0.1)  # Set the step size
+        self.input_1_sugar_ccc.setSuffix(" kg")
+        self.input_1_sugar_ccc.setFixedWidth(150)
         self.input_1_sugar_ccc.setFixedHeight(40)
         bottom_layout.addWidget(self.input_1_sugar_ccc_label, 11, 1, )
         bottom_layout.addWidget(self.input_1_sugar_ccc, 11, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_sugar_orc_label = QLabel("Oatmeal raisin cookies:")
-        self.input_2_sugar_orc = QSpinBox()
+        self.input_2_sugar_orc = QDoubleSpinBox()
         self.input_2_sugar_orc.setFont(font_input)
         self.input_2_sugar_orc_label.setFont(font_input_label)
         self.input_2_sugar_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_sugar_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_sugar_orc.setFixedWidth(100)
+        self.input_2_sugar_orc.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_2_sugar_orc.setSingleStep(0.1)  # Set the step size
+        self.input_2_sugar_orc.setSuffix(" kg")
+        self.input_2_sugar_orc.setFixedWidth(150)
         self.input_2_sugar_orc.setFixedHeight(40)
         self.input_2_sugar_orc.hide()
         self.input_2_sugar_orc_label.hide()
@@ -590,12 +632,15 @@ class Ui_MainWindow(object):
 
         # Input 3
         self.input_3_sugar_bnm_label = QLabel("Banana nut muffins:")
-        self.input_3_sugar_bnm = QSpinBox()
+        self.input_3_sugar_bnm = QDoubleSpinBox()
         self.input_3_sugar_bnm.setFont(font_input)
         self.input_3_sugar_bnm_label.setFont(font_input_label)
         self.input_3_sugar_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_sugar_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_sugar_bnm.setFixedWidth(100)
+        self.input_3_sugar_bnm.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_3_sugar_bnm.setSingleStep(0.1)  # Set the step size
+        self.input_3_sugar_bnm.setSuffix(" kg")
+        self.input_3_sugar_bnm.setFixedWidth(150)
         self.input_3_sugar_bnm.setFixedHeight(40)
         self.input_3_sugar_bnm.hide()
         self.input_3_sugar_bnm_label.hide()
@@ -604,12 +649,15 @@ class Ui_MainWindow(object):
 
         # Input 4
         self.input_4_sugar_blm_label = QLabel("Blueberry muffins:")
-        self.input_4_sugar_blm = QSpinBox()
+        self.input_4_sugar_blm = QDoubleSpinBox()
         self.input_4_sugar_blm.setFont(font_input)
         self.input_4_sugar_blm_label.setFont(font_input_label)
         self.input_4_sugar_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_sugar_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_sugar_blm.setFixedWidth(100)
+        self.input_4_sugar_blm.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_4_sugar_blm.setSingleStep(0.1)  # Set the step size
+        self.input_4_sugar_blm.setSuffix(" kg")
+        self.input_4_sugar_blm.setFixedWidth(150)
         self.input_4_sugar_blm.setFixedHeight(40)
         self.input_4_sugar_blm.hide()
         self.input_4_sugar_blm_label.hide()
@@ -624,26 +672,32 @@ class Ui_MainWindow(object):
         # Input 1
         self.input_1_butter_ccc_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
-        font_input.setPointSize(17)
+        font_input.setPointSize(12)
 
         self.input_1_butter_ccc_label.setFont(font_input_label)
         self.input_1_butter_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_butter_ccc = QSpinBox()
+        self.input_1_butter_ccc = QDoubleSpinBox()
         self.input_1_butter_ccc.setFont(font_input)
         self.input_1_butter_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_butter_ccc.setFixedWidth(100)
+        self.input_1_butter_ccc.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_1_butter_ccc.setSingleStep(0.1)  # Set the step size
+        self.input_1_butter_ccc.setSuffix(" kg")
+        self.input_1_butter_ccc.setFixedWidth(150)
         self.input_1_butter_ccc.setFixedHeight(40)
         bottom_layout.addWidget(self.input_1_butter_ccc_label, 14, 1, )
         bottom_layout.addWidget(self.input_1_butter_ccc, 14, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_butter_orc_label = QLabel("Oatmeal raisin cookies:")
-        self.input_2_butter_orc = QSpinBox()
+        self.input_2_butter_orc = QDoubleSpinBox()
         self.input_2_butter_orc.setFont(font_input)
         self.input_2_butter_orc_label.setFont(font_input_label)
         self.input_2_butter_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_butter_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_butter_orc.setFixedWidth(100)
+        self.input_2_butter_orc.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_2_butter_orc.setSingleStep(0.1)  # Set the step size
+        self.input_2_butter_orc.setSuffix(" kg")
+        self.input_2_butter_orc.setFixedWidth(150)
         self.input_2_butter_orc.setFixedHeight(40)
         self.input_2_butter_orc.hide()
         self.input_2_butter_orc_label.hide()
@@ -652,12 +706,15 @@ class Ui_MainWindow(object):
 
         # Input 3
         self.input_3_butter_bnm_label = QLabel("Banana nut muffins:")
-        self.input_3_butter_bnm = QSpinBox()
+        self.input_3_butter_bnm = QDoubleSpinBox()
         self.input_3_butter_bnm.setFont(font_input)
         self.input_3_butter_bnm_label.setFont(font_input_label)
         self.input_3_butter_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_butter_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_butter_bnm.setFixedWidth(100)
+        self.input_3_butter_bnm.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_3_butter_bnm.setSingleStep(0.1)  # Set the step size
+        self.input_3_butter_bnm.setSuffix(" kg")
+        self.input_3_butter_bnm.setFixedWidth(150)
         self.input_3_butter_bnm.setFixedHeight(40)
         self.input_3_butter_bnm.hide()
         self.input_3_butter_bnm_label.hide()
@@ -666,12 +723,15 @@ class Ui_MainWindow(object):
 
         # Input 4
         self.input_4_butter_blm_label = QLabel("Blueberry muffins:")
-        self.input_4_butter_blm = QSpinBox()
+        self.input_4_butter_blm = QDoubleSpinBox()
         self.input_4_butter_blm.setFont(font_input)
         self.input_4_butter_blm_label.setFont(font_input_label)
         self.input_4_butter_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_butter_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_butter_blm.setFixedWidth(100)
+        self.input_4_butter_blm.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_4_butter_blm.setSingleStep(0.1)  # Set the step size
+        self.input_4_butter_blm.setSuffix(" kg")
+        self.input_4_butter_blm.setFixedWidth(150)
         self.input_4_butter_blm.setFixedHeight(40)
         self.input_4_butter_blm.hide()
         self.input_4_butter_blm_label.hide()
@@ -686,26 +746,32 @@ class Ui_MainWindow(object):
         # Input 1
         self.input_1_eggs_ccc_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
-        font_input.setPointSize(17)
+        font_input.setPointSize(12)
 
         self.input_1_eggs_ccc_label.setFont(font_input_label)
         self.input_1_eggs_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_eggs_ccc = QSpinBox()
+        self.input_1_eggs_ccc = QDoubleSpinBox()
         self.input_1_eggs_ccc.setFont(font_input)
         self.input_1_eggs_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_eggs_ccc.setFixedWidth(100)
+        self.input_1_eggs_ccc.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_1_eggs_ccc.setSingleStep(0.1)  # Set the step size
+        self.input_1_eggs_ccc.setSuffix(" kg")
+        self.input_1_eggs_ccc.setFixedWidth(150)
         self.input_1_eggs_ccc.setFixedHeight(40)
         bottom_layout.addWidget(self.input_1_eggs_ccc_label, 17, 1, )
         bottom_layout.addWidget(self.input_1_eggs_ccc, 17, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_eggs_orc_label = QLabel("Oatmeal raisin cookies:")
-        self.input_2_eggs_orc = QSpinBox()
+        self.input_2_eggs_orc = QDoubleSpinBox()
         self.input_2_eggs_orc.setFont(font_input)
         self.input_2_eggs_orc_label.setFont(font_input_label)
         self.input_2_eggs_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_eggs_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_eggs_orc.setFixedWidth(100)
+        self.input_2_eggs_orc.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_2_eggs_orc.setSingleStep(0.1)  # Set the step size
+        self.input_2_eggs_orc.setSuffix(" kg")
+        self.input_2_eggs_orc.setFixedWidth(150)
         self.input_2_eggs_orc.setFixedHeight(40)
         self.input_2_eggs_orc.hide()
         self.input_2_eggs_orc_label.hide()
@@ -714,12 +780,15 @@ class Ui_MainWindow(object):
 
         # Input 3
         self.input_3_eggs_bnm_label = QLabel("Banana nut muffins:")
-        self.input_3_eggs_bnm = QSpinBox()
+        self.input_3_eggs_bnm = QDoubleSpinBox()
         self.input_3_eggs_bnm.setFont(font_input)
         self.input_3_eggs_bnm_label.setFont(font_input_label)
         self.input_3_eggs_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_eggs_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_eggs_bnm.setFixedWidth(100)
+        self.input_3_eggs_bnm.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_3_eggs_bnm.setSingleStep(0.1)  # Set the step size
+        self.input_3_eggs_bnm.setSuffix(" kg")
+        self.input_3_eggs_bnm.setFixedWidth(150)
         self.input_3_eggs_bnm.setFixedHeight(40)
         self.input_3_eggs_bnm.hide()
         self.input_3_eggs_bnm_label.hide()
@@ -728,12 +797,15 @@ class Ui_MainWindow(object):
 
         # Input 4
         self.input_4_eggs_blm_label = QLabel("Blueberry muffins:")
-        self.input_4_eggs_blm = QSpinBox()
+        self.input_4_eggs_blm = QDoubleSpinBox()
         self.input_4_eggs_blm.setFont(font_input)
         self.input_4_eggs_blm_label.setFont(font_input_label)
         self.input_4_eggs_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_eggs_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_eggs_blm.setFixedWidth(100)
+        self.input_4_eggs_blm.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_4_eggs_blm.setSingleStep(0.1)  # Set the step size
+        self.input_4_eggs_blm.setSuffix(" kg")
+        self.input_4_eggs_blm.setFixedWidth(150)
         self.input_4_eggs_blm.setFixedHeight(40)
         self.input_4_eggs_blm.hide()
         self.input_4_eggs_blm_label.hide()
@@ -747,33 +819,39 @@ class Ui_MainWindow(object):
         # OvenTime list
         ovenTime_list_label = QLabel("Oven Time: ")
         font = QFont()
-        font.setPointSize(25)
+        font.setPointSize(20)
         ovenTime_list_label.setFont(font)
         ovenTime_list_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
         bottom_layout.addWidget(ovenTime_list_label, 19, 0, alignment=Qt.AlignLeft)
         # Input 1
         self.input_1_ovenTime_label = QLabel("Chocolate chip cookies:")
         font_input = QFont()
-        font_input.setPointSize(17)
+        font_input.setPointSize(13)
 
         self.input_1_ovenTime_label.setFont(font_input_label)
         self.input_1_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_ovenTime = QSpinBox()
+        self.input_1_ovenTime = QDoubleSpinBox()
         self.input_1_ovenTime.setFont(font_input)
         self.input_1_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_ovenTime.setFixedWidth(100)
+        self.input_1_ovenTime.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_1_ovenTime.setSingleStep(0.1)  # Set the step size
+        self.input_1_ovenTime.setSuffix(" units")
+        self.input_1_ovenTime.setFixedWidth(150)
         self.input_1_ovenTime.setFixedHeight(40)
         bottom_layout.addWidget(self.input_1_ovenTime_label, 20, 1, )
         bottom_layout.addWidget(self.input_1_ovenTime, 20, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_ovenTime_label = QLabel("Oatmeal raisin cookies:")
-        self.input_2_ovenTime = QSpinBox()
+        self.input_2_ovenTime = QDoubleSpinBox()
         self.input_2_ovenTime.setFont(font_input)
         self.input_2_ovenTime_label.setFont(font_input_label)
         self.input_2_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_ovenTime.setFixedWidth(100)
+        self.input_2_ovenTime.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_2_ovenTime.setSingleStep(0.1)  # Set the step size
+        self.input_2_ovenTime.setSuffix(" units")
+        self.input_2_ovenTime.setFixedWidth(150)
         self.input_2_ovenTime.setFixedHeight(40)
         self.input_2_ovenTime.hide()
         self.input_2_ovenTime_label.hide()
@@ -782,12 +860,15 @@ class Ui_MainWindow(object):
 
         # Input 3
         self.input_3_ovenTime_label = QLabel("Banana nut muffins:")
-        self.input_3_ovenTime = QSpinBox()
+        self.input_3_ovenTime = QDoubleSpinBox()
         self.input_3_ovenTime.setFont(font_input)
         self.input_3_ovenTime_label.setFont(font_input_label)
         self.input_3_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_ovenTime.setFixedWidth(100)
+        self.input_3_ovenTime.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_3_ovenTime.setSingleStep(0.1)  # Set the step size
+        self.input_3_ovenTime.setSuffix(" units")
+        self.input_3_ovenTime.setFixedWidth(150)
         self.input_3_ovenTime.setFixedHeight(40)
         self.input_3_ovenTime.hide()
         self.input_3_ovenTime_label.hide()
@@ -796,12 +877,15 @@ class Ui_MainWindow(object):
 
         # Input 4
         self.input_4_ovenTime_label = QLabel("Blueberry muffins:")
-        self.input_4_ovenTime = QSpinBox()
+        self.input_4_ovenTime = QDoubleSpinBox()
         self.input_4_ovenTime.setFont(font_input)
         self.input_4_ovenTime_label.setFont(font_input_label)
         self.input_4_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_ovenTime.setFixedWidth(100)
+        self.input_4_ovenTime.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_4_ovenTime.setSingleStep(0.1)  # Set the step size
+        self.input_4_ovenTime.setSuffix(" units")
+        self.input_4_ovenTime.setFixedWidth(150)
         self.input_4_ovenTime.setFixedHeight(40)
         self.input_4_ovenTime.hide()
         self.input_4_ovenTime_label.hide()
@@ -812,83 +896,101 @@ class Ui_MainWindow(object):
         #Flour in Storage
         global_label = QLabel("Global Inputs: ")
         font = QFont()
-        font.setPointSize(25)
+        font.setPointSize(20)
         global_label.setFont(font)
         global_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
         bottom_layout.addWidget(global_label, 22, 0, alignment=Qt.AlignLeft)
         # Input 1
         input_1_flour_label = QLabel("Flour:")
         font_input = QFont()
-        font_input.setPointSize(17)
+        font_input.setPointSize(12)
 
 
     
         input_1_flour_label.setFont(font_input_label)
         input_1_flour_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_flour = QSpinBox()
+        self.input_1_flour = QDoubleSpinBox()
         self.input_1_flour.setFont(font_input)
         self.input_1_flour.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_flour.setFixedWidth(100)
+        self.input_1_flour.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_1_flour.setSingleStep(0.1)  # Set the step size
+        self.input_1_flour.setSuffix(" kg")
+        self.input_1_flour.setFixedWidth(150)
         self.input_1_flour.setFixedHeight(40)
         bottom_layout.addWidget(input_1_flour_label, 23, 1, )
         bottom_layout.addWidget(self.input_1_flour, 23, 2, alignment=Qt.AlignLeft)
 
         # Input 2
         input_2_sugar_label = QLabel("Sugar:")
-        self.input_2_sugar = QSpinBox()
+        self.input_2_sugar = QDoubleSpinBox()
         self.input_2_sugar.setFont(font_input)
         input_2_sugar_label.setFont(font_input_label)
         input_2_sugar_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_sugar.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_sugar.setFixedWidth(100)
+        self.input_2_sugar.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_2_sugar.setSingleStep(0.1)  # Set the step size
+        self.input_2_sugar.setSuffix(" kg")
+        self.input_2_sugar.setFixedWidth(150)
         self.input_2_sugar.setFixedHeight(40)
         bottom_layout.addWidget(input_2_sugar_label, 23, 3, )
         bottom_layout.addWidget(self.input_2_sugar, 23, 4, alignment=Qt.AlignLeft)
 
         # Input 3
         input_3_eggs_label = QLabel("Eggs:")
-        self.input_3_eggs = QSpinBox()
+        self.input_3_eggs = QDoubleSpinBox()
         self.input_3_eggs.setFont(font_input)
         input_3_eggs_label.setFont(font_input_label)
         input_3_eggs_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_eggs.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_eggs.setFixedWidth(100)
+        self.input_3_eggs.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_3_eggs.setSingleStep(0.1)  # Set the step size
+        self.input_3_eggs.setSuffix(" units")
+        self.input_3_eggs.setFixedWidth(150)
         self.input_3_eggs.setFixedHeight(40)
         bottom_layout.addWidget(input_3_eggs_label, 24, 1, )
         bottom_layout.addWidget(self.input_3_eggs, 24, 2, alignment=Qt.AlignLeft)
 
         # Input 4
         input_4_butter_label = QLabel("Butter:")
-        self.input_4_butter = QSpinBox()
+        self.input_4_butter = QDoubleSpinBox()
         self.input_4_butter.setFont(font_input)
         input_4_butter_label.setFont(font_input_label)
         input_4_butter_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_butter.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_butter.setFixedWidth(100)
+        self.input_4_butter.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_4_butter.setSingleStep(0.1)  # Set the step size
+        self.input_4_butter.setSuffix(" kg")
+        self.input_4_butter.setFixedWidth(150)
         self.input_4_butter.setFixedHeight(40)
         bottom_layout.addWidget(input_4_butter_label, 24, 3, )
         bottom_layout.addWidget(self.input_4_butter, 24, 4, alignment=Qt.AlignLeft)
 
         # Input 5
         input_5_gluten_label = QLabel("Glutten:")
-        self.input_5_gluten = QSpinBox()
+        self.input_5_gluten = QDoubleSpinBox()
         self.input_5_gluten.setFont(font_input)
         input_5_gluten_label.setFont(font_input_label)
         input_5_gluten_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_5_gluten.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_5_gluten.setFixedWidth(100)
+        self.input_5_gluten.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_5_gluten.setSingleStep(0.1)  # Set the step size
+        self.input_5_gluten.setSuffix(" kg")
+        self.input_5_gluten.setFixedWidth(150)
         self.input_5_gluten.setFixedHeight(40)
         bottom_layout.addWidget(input_5_gluten_label, 25, 1, )
         bottom_layout.addWidget(self.input_5_gluten, 25, 2, alignment=Qt.AlignLeft)
 
         # Input 6
         input_6_oven_capacity_label = QLabel("Oven capacity:")
-        self.input_6_oven_capacity = QSpinBox()
+        self.input_6_oven_capacity = QDoubleSpinBox()
         self.input_6_oven_capacity.setFont(font_input)
         input_6_oven_capacity_label.setFont(font_input_label)
         input_6_oven_capacity_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_6_oven_capacity.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_6_oven_capacity.setFixedWidth(100)
+        self.input_6_oven_capacity.setRange(0.0, 1000.0)  # Set the range of values as needed
+        self.input_6_oven_capacity.setSingleStep(0.1)  # Set the step size
+        self.input_6_oven_capacity.setSuffix(" units")
+        self.input_6_oven_capacity.setFixedWidth(150)
         self.input_6_oven_capacity.setFixedHeight(40)
         bottom_layout.addWidget(input_6_oven_capacity_label, 25, 3, )
         bottom_layout.addWidget(self.input_6_oven_capacity, 25, 4, alignment=Qt.AlignLeft)
@@ -903,6 +1005,7 @@ class Ui_MainWindow(object):
         self.problem1_submit_btn = QPushButton("Submit")
         self.problem1_submit_btn.setStyleSheet("background-color: #F0F0F0;")
         self.problem1_submit_btn.setFixedWidth(120)
+        self.problem1_submit_btn.setFont(font_input_label)
         self.problem1_submit_btn.setFixedHeight(50)
         self.problem1_submit_btn.setStyleSheet("""
             QPushButton {
@@ -972,7 +1075,7 @@ class Ui_MainWindow(object):
         # Input 1
         self.input_1_label_2 = QLabel("Number of neighborhoods:")
         font_input_2 = QFont()
-        font_input_2.setPointSize(17)
+        font_input_2.setPointSize(12)
         font_2 = QFont()
         font_2.setPointSize(18)
         self.input_1_label_2.setFont(font_2)
@@ -980,10 +1083,12 @@ class Ui_MainWindow(object):
         self.input_1_2 = QSpinBox()
         self.input_1_2.setFont(font_input_2)
         self.input_1_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_2.setFixedWidth(100)
+        self.input_1_2.setRange(0, 5)
+        self.input_1_2.setSuffix(" units")
+        self.input_1_2.setFixedWidth(150)
         self.input_1_2.setFixedHeight(40)
         self.bottom_layout_2.addWidget(self.input_1_label_2, 0, 1, alignment=Qt.AlignRight)
-        self.bottom_layout_2.addWidget(self.input_1_2, 0, 2, alignment=Qt.AlignLeft)
+        self.bottom_layout_2.addWidget(self.input_1_2, 0, 2,1,2, alignment=Qt.AlignLeft)
 
         # Input 2
         self.input_2_label_2 = QLabel("Number of locations:")
@@ -992,14 +1097,17 @@ class Ui_MainWindow(object):
         self.input_2_label_2.setFont(font_2)
         self.input_2_label_2.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_2.setFixedWidth(100)
+        self.input_2_2.setRange(0, 5)
+        self.input_2_2.setSuffix(" units")
+        self.input_2_2.setFixedWidth(150)
         self.input_2_2.setFixedHeight(40)
         self.bottom_layout_2.addWidget(self.input_2_label_2, 0, 3, alignment=Qt.AlignRight)
-        self.bottom_layout_2.addWidget(self.input_2_2, 0, 4, alignment=Qt.AlignLeft)
+        self.bottom_layout_2.addWidget(self.input_2_2, 0, 4,1,2, alignment=Qt.AlignLeft)
         # enter button
         self.problem2_enter_btn = QPushButton("Enter")
         self.problem2_enter_btn.setStyleSheet("background-color: #F0F0F0;")
         self.problem2_enter_btn.setFixedWidth(100)
+        self.problem2_enter_btn.setFont(font_input_label)
         self.problem2_enter_btn.setFixedHeight(40)
         self.problem2_enter_btn.setStyleSheet("""
             QPushButton {
@@ -1024,6 +1132,7 @@ class Ui_MainWindow(object):
         self.problem2_submit_btn = QPushButton("Submit")
         self.problem2_submit_btn.setStyleSheet("background-color: #F0F0F0;")
         self.problem2_submit_btn.setFixedWidth(100)
+        self.problem2_submit_btn.setFont(font_input_label)
         self.problem2_submit_btn.setFixedHeight(40)
         self.problem2_submit_btn.setStyleSheet("""
             QPushButton {
@@ -1220,7 +1329,7 @@ class Ui_MainWindow(object):
         self.table.setColumnWidth(6, 85)  # "Sugar",
         self.table.setColumnWidth(7, 85)  # "Eggs",
         self.table.setColumnWidth(8, 85)  # "Oven Time",
-        self.table.setColumnWidth(9, 80)  # "General list",
+        self.table.setColumnWidth(9, 105)  # "General list",
         self.table.setColumnWidth(10, 70)  # "Created In",
         self.table.setColumnWidth(11, 250)  # "Gurobi Result",
         # Set font size for table
@@ -1263,14 +1372,14 @@ class Ui_MainWindow(object):
         # Set column widths
         self.table2.setColumnWidth(0, 8)  # "ID",
         self.table2.setColumnWidth(1, 50)  # "Problem Name",
-        self.table2.setColumnWidth(2, 85)  # "Profit", 
+        self.table2.setColumnWidth(2, 90)  # "Profit", 
         self.table2.setColumnWidth(3, 85)  # "Weighting", 
         self.table2.setColumnWidth(4, 85)  # "Flour list",     
         self.table2.setColumnWidth(5, 85)  # "Butter",
         self.table2.setColumnWidth(6, 85)  # "Sugar",
         self.table2.setColumnWidth(7, 85)  # "Eggs",
         self.table2.setColumnWidth(8, 85)  # "Oven Time",
-        self.table2.setColumnWidth(9, 80)  # "General list",
+        self.table2.setColumnWidth(9, 105)  # "General list",
         self.table2.setColumnWidth(10, 70)  # "Created In",
         self.table2.setColumnWidth(11, 250)  # "Gurobi Result",
         # Set font size for table

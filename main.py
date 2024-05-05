@@ -314,29 +314,29 @@ class MainWindow(QMainWindow):
             cost_label = QLabel(f"Cost of bakery {i+1}:")
             cost_label.setFont(font_2)
             cost_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-            self.ui.bottom_layout_2.addWidget(cost_label, i+3, 2, alignment=Qt.AlignLeft)
+            self.ui.bottom_layout_2.addWidget(cost_label, i+3, 3, alignment=Qt.AlignLeft)
 
                     # Create and add capacity spin box
             setattr(self.ui, f"capacity_spinbox_{i+1}", QSpinBox())
             capacity_spinbox = getattr(self.ui, f"capacity_spinbox_{i+1}")
             capacity_spinbox.setObjectName(f"capacity_spinbox_{i}")
-            capacity_spinbox.setRange(0, 1000)
+            capacity_spinbox.setRange(0, 1000000)
             capacity_spinbox.setSuffix(" units")
             capacity_spinbox.setFont(font_2)
             capacity_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-            capacity_spinbox.setFixedWidth(100)
-            self.ui.bottom_layout_2.addWidget(capacity_spinbox, i+3, 1, alignment=Qt.AlignLeft)
+            capacity_spinbox.setFixedWidth(150)
+            self.ui.bottom_layout_2.addWidget(capacity_spinbox, i+3, 1,1,2, alignment=Qt.AlignLeft)
 
             # Create and add cost spin box
             setattr(self.ui, f"cost_spinbox_{i+1}", QSpinBox())
             cost_spinbox = getattr(self.ui, f"cost_spinbox_{i+1}")
             cost_spinbox.setObjectName(f"cost_spinbox_{i}")
-            cost_spinbox.setRange(0, 10000)
-            cost_spinbox.setSuffix(" $")
+            cost_spinbox.setRange(0, 1000000)
+            cost_spinbox.setSuffix(" dt")
             cost_spinbox.setFont(font_2)
             cost_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-            cost_spinbox.setFixedWidth(100)
-            self.ui.bottom_layout_2.addWidget(cost_spinbox, i+3, 3, alignment=Qt.AlignLeft)
+            cost_spinbox.setFixedWidth(150)
+            self.ui.bottom_layout_2.addWidget(cost_spinbox, i+3, 4,1,2, alignment=Qt.AlignLeft)
         # Assuming num_neighborhoods and num_locations are defined
         for i in range(num_neighborhoods):
             for j in range(num_locations):
