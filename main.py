@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow,QTableWidgetItem,QSpinBox,QLabel
+from PyQt5.QtWidgets import QApplication, QMainWindow,QTableWidgetItem,QSpinBox,QLabel,QDoubleSpinBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 import mysql.connector
@@ -225,7 +225,7 @@ class MainWindow(QMainWindow):
             connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="password",
+                password="MySQLadmin",
                 database="RO_history"
             )
             cursor = connection.cursor()
@@ -328,30 +328,32 @@ class MainWindow(QMainWindow):
             self.ui.bottom_layout_2.addWidget(capacity_spinbox, i+3, 1,1,2, alignment=Qt.AlignLeft)
 
             # Create and add cost spin box
-            setattr(self.ui, f"cost_spinbox_{i+1}", QSpinBox())
+            setattr(self.ui, f"cost_spinbox_{i+1}", QDoubleSpinBox())
             cost_spinbox = getattr(self.ui, f"cost_spinbox_{i+1}")
             cost_spinbox.setObjectName(f"cost_spinbox_{i}")
-            cost_spinbox.setRange(0, 1000000)
             cost_spinbox.setSuffix(" dt")
             cost_spinbox.setFont(font_2)
+            cost_spinbox.setRange(0.0, 1000000.0)  # Set the range of values as needed
+            cost_spinbox.setSingleStep(0.1)  # Set the step size
             cost_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
             cost_spinbox.setFixedWidth(150)
             self.ui.bottom_layout_2.addWidget(cost_spinbox, i+3, 4,1,2, alignment=Qt.AlignLeft)
         # Assuming num_neighborhoods and num_locations are defined
+        distance_min_label = QLabel(f"D min:")
+        distance_min_label.setFont(font_2)
+        distance_min_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        distance_min_label.setFixedWidth(240)
+        self.ui.bottom_layout_2.addWidget(distance_min_label,num_locations+ 4, 2, alignment=Qt.AlignLeft)
+
+        distance_max_label = QLabel(f"D max")
+        distance_max_label.setFont(font_2)
+        distance_max_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
+        distance_max_label.setFixedWidth(240)
+        self.ui.bottom_layout_2.addWidget(distance_max_label, num_locations+ 4, 4, alignment=Qt.AlignLeft)
         for i in range(num_neighborhoods):
             for j in range(num_locations):
                 # Create and add labels for distance min and max
-                distance_min_label = QLabel(f"D min - N {i+1} to L {j+1}:")
-                distance_min_label.setFont(font_2)
-                distance_min_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-                distance_min_label.setFixedWidth(240)
-                self.ui.bottom_layout_2.addWidget(distance_min_label, i*num_locations+ j + num_locations+ 4, 2, alignment=Qt.AlignLeft)
-
-                distance_max_label = QLabel(f"D max - N {i+1} to L {j+1}:")
-                distance_max_label.setFont(font_2)
-                distance_max_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
-                distance_max_label.setFixedWidth(240)
-                self.ui.bottom_layout_2.addWidget(distance_max_label,  i*num_locations+ j + num_locations+ 4, 4, alignment=Qt.AlignLeft)
+                
 
                 distance_label = QLabel(f"Distance - N {i+1} to L {j+1}:")
                 distance_label.setFont(font_2)
@@ -360,9 +362,10 @@ class MainWindow(QMainWindow):
                 self.ui.bottom_layout_2.addWidget(distance_label, i*num_locations +  j + num_locations+ 4, 0, alignment=Qt.AlignLeft)
 
                 # Create and add spin boxes for distance
-                setattr(self.ui, f"distance_spinbox_{i+1}_{j+1}", QSpinBox())
+                setattr(self.ui, f"distance_spinbox_{i+1}_{j+1}", QDoubleSpinBox())
                 distance_spinbox = getattr(self.ui, f"distance_spinbox_{i+1}_{j+1}")
-                distance_spinbox.setRange(0, 100)
+                distance_spinbox.setRange(0.0, 100.0)  # Set the range of values as needed
+                distance_spinbox.setSingleStep(0.1)  # Set the step size
                 distance_spinbox.setSuffix(" km")
                 distance_spinbox.setFont(font_2)
                 distance_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
@@ -370,23 +373,25 @@ class MainWindow(QMainWindow):
                 self.ui.bottom_layout_2.addWidget(distance_spinbox, i*num_locations + j + num_locations + 4, 1, alignment=Qt.AlignLeft)
 
                 # Create and add spin boxes for distance min and max
-                setattr(self.ui, f"distance_min_spinbox_{i+1}_{j+1}", QSpinBox())
-                distance_min_spinbox = getattr(self.ui, f"distance_min_spinbox_{i+1}_{j+1}")
-                distance_min_spinbox.setRange(0, 100)
-                distance_min_spinbox.setSuffix(" km")
-                distance_min_spinbox.setFont(font_2)
-                distance_min_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-                distance_min_spinbox.setFixedWidth(100)
-                self.ui.bottom_layout_2.addWidget(distance_min_spinbox, i*num_locations + j + num_locations + 4, 3, alignment=Qt.AlignLeft)
+        setattr(self.ui, f"distance_min_spinbox", QDoubleSpinBox())
+        distance_min_spinbox = getattr(self.ui, f"distance_min_spinbox")
+        distance_min_spinbox.setRange(0.0, 100.0)  # Set the range of values as needed
+        distance_min_spinbox.setSingleStep(0.1)  # Set the step size
+        distance_min_spinbox.setSuffix(" km")
+        distance_min_spinbox.setFont(font_2)
+        distance_min_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        distance_min_spinbox.setFixedWidth(100)
+        self.ui.bottom_layout_2.addWidget(distance_min_spinbox, num_locations + 4, 3, alignment=Qt.AlignLeft)
 
-                setattr(self.ui, f"distance_max_spinbox_{i+1}_{j+1}", QSpinBox())
-                distance_max_spinbox = getattr(self.ui, f"distance_max_spinbox_{i+1}_{j+1}")
-                distance_max_spinbox.setRange(0, 100)
-                distance_max_spinbox.setSuffix(" km")
-                distance_max_spinbox.setFont(font_2)
-                distance_max_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-                distance_max_spinbox.setFixedWidth(100)
-                self.ui.bottom_layout_2.addWidget(distance_max_spinbox, i*num_locations + j + num_locations + 4, 5, alignment=Qt.AlignLeft)
+        setattr(self.ui, f"distance_max_spinbox", QDoubleSpinBox())
+        distance_max_spinbox = getattr(self.ui, f"distance_max_spinbox")
+        distance_max_spinbox.setRange(0.0, 100.0)  # Set the range of values as needed
+        distance_max_spinbox.setSingleStep(0.1)  # Set the step size
+        distance_max_spinbox.setSuffix(" km")
+        distance_max_spinbox.setFont(font_2)
+        distance_max_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
+        distance_max_spinbox.setFixedWidth(100)
+        self.ui.bottom_layout_2.addWidget(distance_max_spinbox, num_locations + 4, 5, alignment=Qt.AlignLeft)
         count=0
         for i in range(num_locations):
             for j in range(num_locations):
@@ -398,9 +403,10 @@ class MainWindow(QMainWindow):
                     self.ui.bottom_layout_2.addWidget(distance_label, (num_neighborhoods + 1)*num_locations + j + 9-count, i+count, alignment=Qt.AlignLeft)
 
                     # Create and add spin boxes for distance between locations
-                    setattr(self.ui, f"distance_bakeries_spinbox_{i+1}_{j+1}", QSpinBox())
+                    setattr(self.ui, f"distance_bakeries_spinbox_{i+1}_{j+1}", QDoubleSpinBox())
                     distance_bakeries_spinbox = getattr(self.ui, f"distance_bakeries_spinbox_{i+1}_{j+1}")
-                    distance_bakeries_spinbox.setRange(0, 100)
+                    distance_bakeries_spinbox.setRange(0.0, 100.0)  # Set the range of values as needed
+                    distance_bakeries_spinbox.setSingleStep(0.1)  # Set the step size
                     distance_bakeries_spinbox.setSuffix(" km")
                     distance_bakeries_spinbox.setFont(font_2)
                     distance_bakeries_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
@@ -596,8 +602,8 @@ class MainWindow(QMainWindow):
         capacities = []
         costs = []
         distances = []
-        distances_min = []
-        distances_max = []
+        distance_min = 0
+        distance_max = 0
         distance_bakeries = []
 
         # Collect capacities and costs
@@ -612,13 +618,12 @@ class MainWindow(QMainWindow):
         for i in range(num_neighborhoods):
             for j in range(num_locations):
                 distance_spinbox = getattr(self.ui, f"distance_spinbox_{i+1}_{j+1}")
-                distance_min_spinbox = getattr(self.ui, f"distance_min_spinbox_{i+1}_{j+1}")
-                distance_max_spinbox = getattr(self.ui, f"distance_max_spinbox_{i+1}_{j+1}")
+                
 
                 distances.append(distance_spinbox.value())
-                distances_min.append(distance_min_spinbox.value())
-                distances_max.append(distance_max_spinbox.value())
-
+                
+        distance_min = getattr(self.ui, f"distance_min_spinbox").value()
+        distance_max = getattr(self.ui, f"distance_max_spinbox").value()
         for i in range(num_locations):
             for j in range(num_locations):
                 if i != j and i < j:  # Avoid reading spin boxes for distances between the same location
@@ -633,10 +638,10 @@ class MainWindow(QMainWindow):
         print("Capacities List:", capacities)
         print("Costs List:", costs)
         print("Distances List:", distances)
-        print("Distances min List:", distances_min)
-        print("Distances max List:", distances_max)
+        print("Distances min List:", distance_min)
+        print("Distances max List:", distance_max)
         print("Distances Bakeries List:", distance_bakeries)
-        self.save_to_database2("Build Bakeries",num_neighborhoods ,num_locations,capacities, costs, distances, distances_min, distances_max, distance_bakeries, "result problem 2")
+        self.save_to_database2("Build Bakeries",num_neighborhoods ,num_locations,capacities, costs, distances, distance_min, distance_max, distance_bakeries, "result problem 2")
         # Now you have all the values collected in lists
 
 
@@ -645,7 +650,7 @@ class MainWindow(QMainWindow):
             connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="password",
+                password="MySQLadmin",
                 database="RO_history"
             )
 
@@ -675,7 +680,7 @@ class MainWindow(QMainWindow):
             connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="password",
+                password="MySQLadmin",
                 database="RO_history"
             )
 
