@@ -176,7 +176,7 @@ class Ui_MainWindow(object):
         self.label_welcome.setAlignment(Qt.AlignCenter)
         self.verticalLayout_7.addWidget(self.label_welcome)
         font1 = QFont()      
-        font1.setPointSize(30)
+        font1.setPointSize(21)
         # Text label
         self.label_instruction = QLabel(self.page_welcome)
         self.label_instruction.setObjectName("label_instruction")
@@ -1083,7 +1083,7 @@ class Ui_MainWindow(object):
         self.input_1_2 = QSpinBox()
         self.input_1_2.setFont(font_input_2)
         self.input_1_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_2.setRange(0, 5)
+        self.input_1_2.setRange(2, 5)
         self.input_1_2.setSuffix(" units")
         self.input_1_2.setFixedWidth(150)
         self.input_1_2.setFixedHeight(40)
@@ -1097,7 +1097,7 @@ class Ui_MainWindow(object):
         self.input_2_label_2.setFont(font_2)
         self.input_2_label_2.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_2.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_2.setRange(0, 5)
+        self.input_2_2.setRange(2, 5)
         self.input_2_2.setSuffix(" units")
         self.input_2_2.setFixedWidth(150)
         self.input_2_2.setFixedHeight(40)
@@ -1281,7 +1281,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.label_gurobi_res2 = QLabel(self.gurobi_res2_page)
         self.label_gurobi_res2.setObjectName("label_gurobi_res2")
-        self.label_gurobi_res2.setText("This is Gurobi result 2")
+        # self.label_gurobi_res2.setText("This is Gurobi result 2")
         self.label_gurobi_res2.setAlignment(Qt.AlignCenter)
         self.label_gurobi_res2.setFont(font1)
         self.label_gurobi_res2.setStyleSheet("color: #FFF;")
@@ -1344,7 +1344,7 @@ class Ui_MainWindow(object):
 
         # Set row heights
         for row in range(self.table.rowCount()):
-            self.table.setRowHeight(row, 40)  # Set height for each row
+            self.table.setRowHeight(row, 100)  # Set height for each row
         # Set column headers
         self.table.setHorizontalHeaderLabels(["ID","Name", "Profit", "Weighting", "Flour list", "Butter", "Sugar", "Eggs", "Oven Time", "General list", "Created In", "Gurobi Result"])
 
@@ -1381,7 +1381,7 @@ class Ui_MainWindow(object):
         self.table2.setColumnWidth(8, 85)  # "Oven Time",
         self.table2.setColumnWidth(9, 105)  # "General list",
         self.table2.setColumnWidth(10, 70)  # "Created In",
-        self.table2.setColumnWidth(11, 250)  # "Gurobi Result",
+        self.table2.setColumnWidth(11, 230)  # "Gurobi Result",
         # Set font size for table
         font = QFont()
         font.setPointSize(8)  # Set font size to 10 points
@@ -1392,9 +1392,7 @@ class Ui_MainWindow(object):
                                 "QTableWidget::item { background-color: #ffffff; }"  # Set background color for cells
                                 "QTableWidget::item:selected { background-color: #a6a6a6; }")  # Set background color for selected cells
 
-        # Set row heights
-        for row in range(self.table2.rowCount()):
-            self.table2.setRowHeight(row, 40)  # Set height for each row
+       
         # Set column headers
         self.table2.setHorizontalHeaderLabels(["ID","Name","Neighborhoods", "Bakeries", "Capacities", "Costs", "Distances", "Distances min", "Distances max", "Distances bakeries", "Created In", "Gurobi Result"])
 

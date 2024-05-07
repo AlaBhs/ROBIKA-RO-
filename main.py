@@ -228,7 +228,7 @@ class MainWindow(QMainWindow):
             connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="MySQLadmin",
+                password="password",
                 database="RO_history"
             )
             cursor = connection.cursor()
@@ -259,6 +259,9 @@ class MainWindow(QMainWindow):
                 item.setTextAlignment(Qt.AlignCenter)
                 self.ui.table.setItem(row_num, col_num, item)
 
+        for row in range(self.ui.table.rowCount()):
+            self.ui.table.setRowHeight(row, 147)  # Set height for each row
+
     def populate_table2(self):
         # Fetch data from the database
         rows = self.fetch_data("history2","created_at")
@@ -274,6 +277,9 @@ class MainWindow(QMainWindow):
                 item = QTableWidgetItem(str(col_data))
                 item.setTextAlignment(Qt.AlignCenter)
                 self.ui.table2.setItem(row_num, col_num, item)
+                 # Set row heights
+        for row in range(self.ui.table2.rowCount()):
+            self.ui.table2.setRowHeight(row, 147)  # Set height for each row
 
 
     def on_btn_problem2_enter_clicked(self):
@@ -599,12 +605,14 @@ class MainWindow(QMainWindow):
                 if all(item == 0 for item in weighting_list):
                         status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits,dietary_restrictions=dietary_restrictions)
         status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits, minimum_production=weighting_list, oven_capacity=oven_time_list, dietary_restrictions=dietary_restrictions)
+        restructered_params = ''.join(f'{key}:{value}\n' for key, value in params.items())
         if res == None:
-            resultat=f'problem resolution resolved in the following status: {status} \n with the following solution {params}'
+            resultat=f'problem resolution resolved in the following status: {status} \n with the following solution {restructered_params}'
             if params=={} or params==[]:
                     resultat=f'problem resolution resolved in the following status: {status} \n '
         else:
-            resultat=f'problem resolution resolved in the following status: {status} \n with  an objective function equals to {res} given the following coefficents {params}'
+            resultat=f'problem resolution resolved in the following status: {status} \n with  an objective function equals to {res} given the following coefficents {restructered_params}'
+        
         print("Profit List:", profit_list)
         print("Weighting List:", weighting_list)
         print("Flour List:", flour_list)
@@ -612,13 +620,17 @@ class MainWindow(QMainWindow):
         print("Sugar List:", sugar_list)
         print("Eggs List:", eggs_list)
         print("Oven Time List:", oven_time_list)
+        print("Result:", resultat)
 
+
+        self.ui.label_gurobi_res1.setText(resultat)
 
 
         # redirection to result page
+        
         self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res1_page)
-         # Save the values in a MySQL database
-        self.save_to_database("Bakery", profit_list, weighting_list, flour_list, butter_list, sugar_list, eggs_list, oven_time_list, global_inputs_list, "this is a result")
+        # Save the values in a MySQL database
+        # self.save_to_database("Bakery", profit_list, weighting_list, flour_list, butter_list, sugar_list, eggs_list, oven_time_list, global_inputs_list, resultat)
 
     def reload_page(self,num_locations,num_neighborhoods):
         
@@ -703,7 +715,7 @@ class MainWindow(QMainWindow):
             '''
             self.ui.problem2_submit_btn.hide()
             self.ui.problem2_enter_btn.show()
-            self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res2_page)'''
+            '''
             # Save the values in a MySQL database
             # self.save_to_database("problem 2", input_1_value, input_2_value, input_3_value, input_4_value, "this is a result")
             # Define lists to store the values
@@ -758,24 +770,28 @@ class MainWindow(QMainWindow):
             print("Distances Bakeries List:", DB)
 
             status,params, res = optimize_bakery_location(I, J,capacities, costs, D, distance_max, DB, distance_min)
+            restructered_params = ''.join(f'{key}:{value}\n' for key, value in params.items())
             if res == None:
-                resultat=f'problem resolution resolved in the following status: {status} \n with the following solution {params}'
+                resultat=f'problem resolution resolved in the following status: \n{status} \n with the following solution \n{restructered_params}\n'
                 if params=={} or params==[]:
-                    resultat=f'problem resolution resolved in the following status: {status} \n '
+                    resultat=f'problem resolution resolved in the following status: \n{status} \n '
             else:
-                resultat=f'problem resolution resolved in the following status: {status} \n with  an objective function equals to {res} given the following coefficents {params}'
+                resultat=f'problem resolution resolved in the following status: \n{status} \n with  an objective function equals to \n{res} \ngiven the following coefficents \n{restructered_params}'
 
             #############################
-            
-            print(status)
-            print("--------------------------")
-            print(params)
-            print("--------------------------")
-            print(res)
-            
+           
 
-            self.save_to_database2("Build Bakeries",num_neighborhoods ,num_locations,capacities, costs, distances, distance_min, distance_max, distance_bakeries, "result problem 2")
-            # Now you have all the values collected in lists
+            print("status ",status)
+            print("--------------------------")
+            print("params ",restructered_params)
+            print("--------------------------")
+            print("res ",res)
+            print("--------------------------")
+            print("resultat ",resultat)
+
+            self.ui.label_gurobi_res2.setText(resultat)
+            self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res2_page)
+            self.save_to_database2("Build Bakeries",num_neighborhoods ,num_locations,capacities, costs, distances, distance_min, distance_max, DB, resultat)
 
 
     def save_to_database(self, problemName, profit_list, weighting_list, flour_list, butter_list, sugar_list, eggs_list, oven_time_list,general_list, result):
@@ -783,7 +799,7 @@ class MainWindow(QMainWindow):
             connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="MySQLadmin",
+                password="password",
                 database="RO_history"
             )
 
@@ -813,7 +829,7 @@ class MainWindow(QMainWindow):
             connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="MySQLadmin",
+                password="password",
                 database="RO_history" 
             )
 
