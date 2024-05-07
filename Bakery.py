@@ -55,7 +55,7 @@ def optimize_production(profit_coefficients, resource_coefficients, resource_lim
     if dietary_restrictions is not None:
         if num_goods>2:
             model.addConstr(x[1] + x[3] >= dietary_restrictions)
-        else:
+        elif num_goods==2:
             model.addConstr(x[1] >= dietary_restrictions)
 
     status,params, res=RunPLSolution(model,x,goods)

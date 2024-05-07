@@ -33,9 +33,10 @@ def RunPLSolution (model,x,num,attempts=3):
         print("Optimal Solution:")
         for i in num:
             Optimal_solution.append(x[i].x)
+            solution[f"x[{i}]"]=x[i].x
             print(f"Number of goods produced for item {i+1}: {x[i].x}")
         print(f"Total Profit: {model.objVal}")
-        return status, Optimal_solution, model.objVal
+        return status, solution, model.objVal
     elif model.status == GRB.INFEASIBLE:
         try:
                 # Compute the Irreducible Inconsistent Subsystem (IIS)
