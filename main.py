@@ -513,7 +513,7 @@ class MainWindow(QMainWindow):
         oven_time_list = [input_1_ovenTime, input_2_ovenTime, input_3_ovenTime, input_4_ovenTime]
         
 
-        global_inputs_list =[input_1_flour,input_2_sugar,input_3_eggs,input_4_butter,]
+        global_inputs_list =[input_1_flour,input_2_sugar,input_3_eggs,input_4_butter]
 
 
 
@@ -613,19 +613,6 @@ class MainWindow(QMainWindow):
         print("Eggs List:", eggs_list)
         print("Oven Time List:", oven_time_list)
 
-
-        ''''
-        # Adjusted Example Data
-        profit_coefficients = [0.5, 0.4, 0.6, 0.7]  # Profit per unit
-        resource_coefficients = [[0.1, 0.2, 0.15, 0.25],  # Flour coefficients for each good
-                                [0.1, 0.2, 0.15, 0.25],  # Sugar coefficients for each good
-                                [0.1, 0.2, 0.15, 0.25]]  # Eggs coefficients for each good
-        resource_limits = [100, 80, 60]  # Increased resource limits for Flour, Sugar, Eggs
-        #optinal
-        minimum_production = [5, 2, 0, 0]  # Lowered minimum production requirements
-        oven_capacity = [1, 1, 2, 2, 6000]  # Oven slot usage per unit
-        dietary_restrictions = 5  # Lowered dietary restrictions
-        '''
 
 
         # redirection to result page
