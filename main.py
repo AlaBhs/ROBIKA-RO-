@@ -592,6 +592,7 @@ class MainWindow(QMainWindow):
         oven_time_list=[0 if time == -1 else time for time in oven_time_list]
         oven_time_list.append(input_6_oven_capacity)
         resource_limits=[input_1_flour,input_2_sugar,input_3_eggs,input_4_butter]
+
         dietary_restrictions=input_5_gluten
         if dietary_restrictions==-1:
             status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits, minimum_production=weighting_list, oven_capacity=oven_time_list)
@@ -607,11 +608,11 @@ class MainWindow(QMainWindow):
         status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits, minimum_production=weighting_list, oven_capacity=oven_time_list, dietary_restrictions=dietary_restrictions)
         restructered_params = ''.join(f'{key}:{value}\n' for key, value in params.items())
         if res == None:
-            resultat=f'problem resolution resolved in the following status: {status} \n with the following solution {restructered_params}'
+            resultat=f'problem resolution resolved in the following status: {status} \n with the following solution \n {restructered_params}'
             if params=={} or params==[]:
                     resultat=f'problem resolution resolved in the following status: {status} \n '
         else:
-            resultat=f'problem resolution resolved in the following status: {status} \n with  an objective function equals to {res} given the following coefficents {restructered_params}'
+            resultat=f'problem resolution resolved in the following status: {status} \n with  an objective function equals to {res} \n given the following coefficents {restructered_params}'
         
         print("Profit List:", profit_list)
         print("Weighting List:", weighting_list)

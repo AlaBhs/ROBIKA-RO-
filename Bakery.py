@@ -42,8 +42,10 @@ def optimize_production(profit_coefficients, resource_coefficients, resource_lim
 
     # Constraints: Minimum Production Requirements
     if minimum_production is not None and minimum_production != []:
-        for i, min_prod in enumerate(minimum_production):
-            model.addConstr(x[i] >= min_prod)
+        '''for i, min_prod in enumerate(minimum_production):
+            model.addConstr(x[i] >= min_prod)'''
+        for i in goods:
+            model.addConstr(x[i] >= minimum_production[i])
 
     # Constraints: Oven Capacity
     if oven_capacity is not None and oven_capacity !=[]:
@@ -51,7 +53,11 @@ def optimize_production(profit_coefficients, resource_coefficients, resource_lim
 
     # Constraints: Dietary Restrictions
     if dietary_restrictions is not None:
-        model.addConstr(x[1] + x[3] >= dietary_restrictions)
+        if num_goods>2:
+            model.addConstr(x[1] + x[3] >= dietary_restrictions)
+        else:
+            model.addConstr(x[1] >= dietary_restrictions)
+
     status,params, res=RunPLSolution(model,x,goods)
     return status,params, res
 
