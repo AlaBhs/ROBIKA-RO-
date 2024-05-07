@@ -2,22 +2,22 @@ from gurobipy import GRB , GurobiError
 def get_status_description(status_code):
     status_dict = {
         1: "Model is loaded, but no solution information is available.",
-        2: "Model was solved to optimality (subject to tolerances), and an optimal solution is available.",
+        2: "Model was solved to optimality (subject to tolerances),\n and an optimal solution is available.",
         3: "Model was proven to be infeasible.",
-        4: "Model was proven to be either infeasible or unbounded. To obtain a more definitive conclusion, set the DualReductions parameter to 0 and reoptimize.",
-        5: "Model was proven to be unbounded. Important note: an unbounded status indicates the presence of an unbounded ray that allows the objective to improve without limit. It says nothing about whether the model has a feasible solution. If you require information on feasibility, you should set the objective to zero and reoptimize.",
-        6: "Optimal objective for model was proven to be worse than the value specified in the Cutoff parameter. No solution information is available.",
-        7: "Optimization terminated because the total number of simplex iterations performed exceeded the value specified in the IterationLimit parameter, or because the total number of barrier iterations exceeded the value specified in the BarIterLimit parameter.",
-        8: "Optimization terminated because the total number of branch-and-cut nodes explored exceeded the value specified in the NodeLimit parameter.",
-        9: "Optimization terminated because the time expended exceeded the value specified in the TimeLimit parameter.",
-        10: "Optimization terminated because the number of solutions found reached the value specified in the SolutionLimit parameter.",
+        4: "Model was proven to be either infeasible or unbounded. \nTo obtain a more definitive conclusion, \nset the DualReductions parameter to 0 and reoptimize.",
+        5: "Model was proven to be unbounded. \nImportant note: an unbounded status indicates the presence of \nan unbounded ray that allows the objective to improve without limit.\n It says nothing about whether the model has a feasible solution. \nIf you require information on feasibility, \nyou should set the objective to zero and reoptimize.",
+        6: "Optimal objective for model was proven to be worse than\n the value specified in the Cutoff parameter. \nNo solution information is available.",
+        7: "Optimization terminated because the total number of \nsimplex iterations performed exceeded the value specified\n in the IterationLimit parameter, or because the total number of\n barrier iterations exceeded the value specified in \nthe BarIterLimit parameter.",
+        8: "Optimization terminated because the total number of \nbranch-and-cut nodes explored exceeded the value specified\n in the NodeLimit parameter.",
+        9: "Optimization terminated because the time expended exceeded\n the value specified in the TimeLimit parameter.",
+        10: "Optimization terminated because the number of solutions found\n reached the value specified in the SolutionLimit parameter.",
         11: "Optimization was terminated by the user.",
         12: "Optimization was terminated due to unrecoverable numerical difficulties.",
-        13: "Unable to satisfy optimality tolerances; a sub-optimal solution is available.",
-        14: "An asynchronous optimization call was made, but the associated optimization run is not yet complete.",
-        15: "User specified an objective limit (a bound on either the best objective or the best bound), and that limit has been reached.",
-        16: "Optimization terminated because the work expended exceeded the value specified in the WorkLimit parameter.",
-        17: "Optimization terminated because the total amount of allocated memory exceeded the value specified in the SoftMemLimit parameter."
+        13: "Unable to satisfy optimality tolerances; \na sub-optimal solution is available.",
+        14: "An asynchronous optimization call was made, \nbut the associated optimization run is not yet complete.",
+        15: "User specified an objective limit \n(a bound on either the best objective or the best bound), \nand that limit has been reached.",
+        16: "Optimization terminated because the work expended exceeded\n the value specified in the WorkLimit parameter.",
+        17: "Optimization terminated because the total amount of \nallocated memory exceeded the value specified in \nthe SoftMemLimit parameter."
     }
     return status_dict.get(status_code, "Unknown status code")
 def RunPLSolution (model,x,num,attempts=3):

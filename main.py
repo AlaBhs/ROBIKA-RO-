@@ -343,7 +343,7 @@ class MainWindow(QMainWindow):
             cost_spinbox.setSuffix(" dt")
             cost_spinbox.setFont(font_2)
             cost_spinbox.setRange(0.0, 1000000.0)  # Set the range of values as needed
-            cost_spinbox.setSingleStep(0.1)  # Set the step size
+            cost_spinbox.setSingleStep(50)  # Set the step size
             cost_spinbox.setStyleSheet("background-color: #F0F0F0;padding:5px;")
             cost_spinbox.setFixedWidth(150)
             self.ui.bottom_layout_2.addWidget(cost_spinbox, i+3, 4,1,2, alignment=Qt.AlignLeft)
@@ -608,11 +608,11 @@ class MainWindow(QMainWindow):
         status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits, minimum_production=weighting_list, oven_capacity=oven_time_list, dietary_restrictions=dietary_restrictions)
         restructered_params = ''.join(f'{key}:{value}\n' for key, value in params.items())
         if res == None:
-            resultat=f'problem resolution resolved in the following status: {status} \n with the following solution \n {restructered_params}'
+            resultat=f'problem resolution resolved in the following status: \n{status} \n with the following solution \n {restructered_params}\n'
             if params=={} or params==[]:
-                    resultat=f'problem resolution resolved in the following status: {status} \n '
+                    resultat=f'problem resolution resolved in the following status:\n {status} \n '
         else:
-            resultat=f'problem resolution resolved in the following status: {status} \n with  an objective function equals to {res} \n given the following coefficents {restructered_params}'
+            resultat=f'problem resolution resolved in the following status:\n {status} \n with  an objective function equals to\n {res} \n given the following coefficents :\n{restructered_params}'
         
         print("Profit List:", profit_list)
         print("Weighting List:", weighting_list)
@@ -631,7 +631,7 @@ class MainWindow(QMainWindow):
         
         self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res1_page)
         # Save the values in a MySQL database
-        # self.save_to_database("Bakery", profit_list, weighting_list, flour_list, butter_list, sugar_list, eggs_list, oven_time_list, global_inputs_list, resultat)
+        self.save_to_database("Bakery", profit_list, weighting_list, flour_list, butter_list, sugar_list, eggs_list, oven_time_list, global_inputs_list, resultat)
 
     def reload_page(self,num_locations,num_neighborhoods):
         
@@ -717,10 +717,6 @@ class MainWindow(QMainWindow):
             self.ui.problem2_submit_btn.hide()
             self.ui.problem2_enter_btn.show()
             '''
-            # Save the values in a MySQL database
-            # self.save_to_database("problem 2", input_1_value, input_2_value, input_3_value, input_4_value, "this is a result")
-            # Define lists to store the values
-            
 
             # Collect capacities and costs
             for i in range(num_locations):

@@ -750,12 +750,11 @@ class Ui_MainWindow(object):
 
         self.input_1_eggs_ccc_label.setFont(font_input_label)
         self.input_1_eggs_ccc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_eggs_ccc = QDoubleSpinBox()
+        self.input_1_eggs_ccc = QSpinBox()
         self.input_1_eggs_ccc.setFont(font_input)
         self.input_1_eggs_ccc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_eggs_ccc.setRange(0.0, 1000.0)  # Set the range of values as needed
-        self.input_1_eggs_ccc.setSingleStep(0.1)  # Set the step size
-        self.input_1_eggs_ccc.setSuffix(" kg")
+        self.input_1_eggs_ccc.setRange(0, 1000)
+        self.input_1_eggs_ccc.setSuffix(" units")
         self.input_1_eggs_ccc.setFixedWidth(150)
         self.input_1_eggs_ccc.setFixedHeight(40)
         bottom_layout.addWidget(self.input_1_eggs_ccc_label, 17, 1, )
@@ -763,14 +762,13 @@ class Ui_MainWindow(object):
 
         # Input 2
         self.input_2_eggs_orc_label = QLabel("Oatmeal raisin cookies:")
-        self.input_2_eggs_orc = QDoubleSpinBox()
+        self.input_2_eggs_orc = QSpinBox()
         self.input_2_eggs_orc.setFont(font_input)
         self.input_2_eggs_orc_label.setFont(font_input_label)
         self.input_2_eggs_orc_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_2_eggs_orc.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_2_eggs_orc.setRange(0.0, 1000.0)  # Set the range of values as needed
-        self.input_2_eggs_orc.setSingleStep(0.1)  # Set the step size
-        self.input_2_eggs_orc.setSuffix(" kg")
+        self.input_2_eggs_orc.setRange(0, 1000)
+        self.input_2_eggs_orc.setSuffix(" units")
         self.input_2_eggs_orc.setFixedWidth(150)
         self.input_2_eggs_orc.setFixedHeight(40)
         self.input_2_eggs_orc.hide()
@@ -780,14 +778,13 @@ class Ui_MainWindow(object):
 
         # Input 3
         self.input_3_eggs_bnm_label = QLabel("Banana nut muffins:")
-        self.input_3_eggs_bnm = QDoubleSpinBox()
+        self.input_3_eggs_bnm = QSpinBox()
         self.input_3_eggs_bnm.setFont(font_input)
         self.input_3_eggs_bnm_label.setFont(font_input_label)
         self.input_3_eggs_bnm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_eggs_bnm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_eggs_bnm.setRange(0.0, 1000.0)  # Set the range of values as needed
-        self.input_3_eggs_bnm.setSingleStep(0.1)  # Set the step size
-        self.input_3_eggs_bnm.setSuffix(" kg")
+        self.input_3_eggs_bnm.setRange(0, 1000)
+        self.input_3_eggs_bnm.setSuffix(" units")
         self.input_3_eggs_bnm.setFixedWidth(150)
         self.input_3_eggs_bnm.setFixedHeight(40)
         self.input_3_eggs_bnm.hide()
@@ -797,14 +794,13 @@ class Ui_MainWindow(object):
 
         # Input 4
         self.input_4_eggs_blm_label = QLabel("Blueberry muffins:")
-        self.input_4_eggs_blm = QDoubleSpinBox()
+        self.input_4_eggs_blm = QSpinBox()
         self.input_4_eggs_blm.setFont(font_input)
         self.input_4_eggs_blm_label.setFont(font_input_label)
         self.input_4_eggs_blm_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_4_eggs_blm.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_4_eggs_blm.setRange(0.0, 1000.0)  # Set the range of values as needed
-        self.input_4_eggs_blm.setSingleStep(0.1)  # Set the step size
-        self.input_4_eggs_blm.setSuffix(" kg")
+        self.input_4_eggs_blm.setRange(0, 1000)
+        self.input_4_eggs_blm.setSuffix(" units")
         self.input_4_eggs_blm.setFixedWidth(150)
         self.input_4_eggs_blm.setFixedHeight(40)
         self.input_4_eggs_blm.hide()
@@ -817,7 +813,7 @@ class Ui_MainWindow(object):
 
 
         # OvenTime list
-        ovenTime_list_label = QLabel("Oven Time: ")
+        ovenTime_list_label = QLabel("Oven Capacity: ")
         font = QFont()
         font.setPointSize(20)
         ovenTime_list_label.setFont(font)
@@ -830,11 +826,10 @@ class Ui_MainWindow(object):
 
         self.input_1_ovenTime_label.setFont(font_input_label)
         self.input_1_ovenTime_label.setStyleSheet("color: #FFF;padding-bottom:5px;")  # Set label text color
-        self.input_1_ovenTime = QDoubleSpinBox()
+        self.input_1_ovenTime = QSpinBox()
         self.input_1_ovenTime.setFont(font_input)
         self.input_1_ovenTime.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_1_ovenTime.setRange(0.0, 1000.0)  # Set the range of values as needed
-        self.input_1_ovenTime.setSingleStep(0.1)  # Set the step size
+        self.input_1_ovenTime.setRange(0, 1000)
         self.input_1_ovenTime.setSuffix(" units")
         self.input_1_ovenTime.setFixedWidth(150)
         self.input_1_ovenTime.setFixedHeight(40)
@@ -937,13 +932,12 @@ class Ui_MainWindow(object):
 
         # Input 3
         input_3_eggs_label = QLabel("Eggs:")
-        self.input_3_eggs = QDoubleSpinBox()
+        self.input_3_eggs = QSpinBox()
         self.input_3_eggs.setFont(font_input)
         input_3_eggs_label.setFont(font_input_label)
         input_3_eggs_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_3_eggs.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_3_eggs.setRange(0.0, 1000.0)  # Set the range of values as needed
-        self.input_3_eggs.setSingleStep(0.1)  # Set the step size
+        self.input_3_eggs.setRange(0, 1000)
         self.input_3_eggs.setSuffix(" units")
         self.input_3_eggs.setFixedWidth(150)
         self.input_3_eggs.setFixedHeight(40)
@@ -982,13 +976,12 @@ class Ui_MainWindow(object):
 
         # Input 6
         input_6_oven_capacity_label = QLabel("Oven capacity:")
-        self.input_6_oven_capacity = QDoubleSpinBox()
+        self.input_6_oven_capacity = QSpinBox()
         self.input_6_oven_capacity.setFont(font_input)
         input_6_oven_capacity_label.setFont(font_input_label)
         input_6_oven_capacity_label.setStyleSheet("color: #FFF;padding-bottom:5px;")
         self.input_6_oven_capacity.setStyleSheet("background-color: #F0F0F0;padding:5px;")
-        self.input_6_oven_capacity.setRange(0.0, 1000.0)  # Set the range of values as needed
-        self.input_6_oven_capacity.setSingleStep(0.1)  # Set the step size
+        self.input_6_oven_capacity.setRange(0, 1000)
         self.input_6_oven_capacity.setSuffix(" units")
         self.input_6_oven_capacity.setFixedWidth(150)
         self.input_6_oven_capacity.setFixedHeight(40)
