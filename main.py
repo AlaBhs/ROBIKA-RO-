@@ -1,10 +1,13 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow,QTableWidgetItem,QSpinBox,QLabel,QDoubleSpinBox
+from PyQt5.QtWidgets import QApplication, QMainWindow,QTableWidgetItem,QSpinBox,QLabel,QDoubleSpinBox,QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 import mysql.connector
 from ui_main import Ui_MainWindow
 from ui_functions import UIFunctions
+from Bakery_Location import optimize_bakery_location
+from Bakery import optimize_production
+import numpy as np 
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -508,7 +511,9 @@ class MainWindow(QMainWindow):
         sugar_list = [input_1_sugar_ccc, input_2_sugar_orc, input_3_sugar_bnm, input_4_sugar_blm]
         eggs_list = [input_1_eggs_ccc, input_2_eggs_orc, input_3_eggs_bnm, input_4_eggs_blm]
         oven_time_list = [input_1_ovenTime, input_2_ovenTime, input_3_ovenTime, input_4_ovenTime]
-        global_inputs_list =[input_1_flour,input_2_sugar,input_3_eggs,input_4_butter,input_5_gluten,input_6_oven_capacity]
+        
+
+        global_inputs_list =[input_1_flour,input_2_sugar,input_3_eggs,input_4_butter,]
 
 
 
@@ -571,6 +576,35 @@ class MainWindow(QMainWindow):
         self.ui.input_5_gluten.setValue(0)
         self.ui.input_6_oven_capacity.setValue(0)
 
+        profit_list = [profit for profit in profit_list if profit != -1]
+        weighting_list = [0 if weight == -1 else weight for weight in weighting_list]
+        flour_list= [0 if flour == -1 else flour for flour in flour_list]
+        butter_list = [0 if butter == -1 else butter for butter in butter_list]
+        sugar_list =[0 if sugar == -1 else sugar for sugar in sugar_list]
+        eggs_list = [0 if eggs == -1 else eggs for eggs in eggs_list]
+        resource_coefficients=[flour_list,butter_list,sugar_list,eggs_list]
+        oven_time_list=[0 if time == -1 else time for time in oven_time_list]
+        oven_time_list.append(input_6_oven_capacity)
+        resource_limits=[input_1_flour,input_2_sugar,input_3_eggs,input_4_butter]
+        dietary_restrictions=input_5_gluten
+        if dietary_restrictions==-1:
+            status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits, minimum_production=weighting_list, oven_capacity=oven_time_list)
+            if all(item == 0 for item in oven_time_list):
+                status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits,minimum_production=weighting_list )
+                if all(item == 0 for item in weighting_list):
+                    status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits)
+        else:
+            if all(item == 0 for item in oven_time_list):
+                status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits,minimum_production=weighting_list,dietary_restrictions=dietary_restrictions )
+                if all(item == 0 for item in weighting_list):
+                        status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits,dietary_restrictions=dietary_restrictions)
+        status,params, res =optimize_production(profit_list, resource_coefficients, resource_limits, minimum_production=weighting_list, oven_capacity=oven_time_list, dietary_restrictions=dietary_restrictions)
+        if res == None:
+            resultat=f'problem resolution resolved in the following status: {status} \n with the following solution {params}'
+            if params=={} or params==[]:
+                    resultat=f'problem resolution resolved in the following status: {status} \n '
+        else:
+            resultat=f'problem resolution resolved in the following status: {status} \n with  an objective function equals to {res} given the following coefficents {params}'
         print("Profit List:", profit_list)
         print("Weighting List:", weighting_list)
         print("Flour List:", flour_list)
@@ -578,7 +612,20 @@ class MainWindow(QMainWindow):
         print("Sugar List:", sugar_list)
         print("Eggs List:", eggs_list)
         print("Oven Time List:", oven_time_list)
-        print("General List:", global_inputs_list)
+
+
+        ''''
+        # Adjusted Example Data
+        profit_coefficients = [0.5, 0.4, 0.6, 0.7]  # Profit per unit
+        resource_coefficients = [[0.1, 0.2, 0.15, 0.25],  # Flour coefficients for each good
+                                [0.1, 0.2, 0.15, 0.25],  # Sugar coefficients for each good
+                                [0.1, 0.2, 0.15, 0.25]]  # Eggs coefficients for each good
+        resource_limits = [100, 80, 60]  # Increased resource limits for Flour, Sugar, Eggs
+        #optinal
+        minimum_production = [5, 2, 0, 0]  # Lowered minimum production requirements
+        oven_capacity = [1, 1, 2, 2, 6000]  # Oven slot usage per unit
+        dietary_restrictions = 5  # Lowered dietary restrictions
+        '''
 
 
         # redirection to result page
@@ -586,63 +633,162 @@ class MainWindow(QMainWindow):
          # Save the values in a MySQL database
         self.save_to_database("Bakery", profit_list, weighting_list, flour_list, butter_list, sugar_list, eggs_list, oven_time_list, global_inputs_list, "this is a result")
 
+    def reload_page(self,num_locations,num_neighborhoods):
+        
+        # Reset input fields
+        self.ui.input_1_2.clear()  # Assuming input_1_2 is a QLineEdit or similar widget
+        self.ui.input_2_2.clear()  # Assuming input_2_2 is a QLineEdit or similar widget
+        self.ui.input_1_2.show()
+        self.ui.input_2_2.show()
+        self.ui.input_1_label_2.show()
+        self.ui.input_2_label_2.show()
+        # Show the necessary buttons and set the appropriate widget
+        self.ui.problem2_submit_btn.hide()
+        self.ui.problem2_enter_btn.show()
+        # Hide all input labels and spin boxes
+        for i in range(num_locations):
+            # Hide capacity and cost labels and spin boxes
+            capacity_spinbox = getattr(self.ui, f"capacity_spinbox_{i+1}")
+            cost_spinbox = getattr(self.ui, f"cost_spinbox_{i+1}")
+            capacity_spinbox.hide()
+            cost_spinbox.hide()
 
+        # Hide distance labels and spin boxes
+        for i in range(num_neighborhoods):
+            for j in range(num_locations):
+                distance_spinbox = getattr(self.ui, f"distance_spinbox_{i+1}_{j+1}")
+                distance_spinbox.hide()
+
+        # Hide distance min and max labels and spin boxes
+      
+        distance_min_spinbox = getattr(self.ui, "distance_min_spinbox")
+        distance_max_spinbox = getattr(self.ui, "distance_max_spinbox")
+        distance_min_spinbox.hide()
+        distance_max_spinbox.hide()
+
+        # Hide distance between locations labels and spin boxes
+        for i in range(num_locations):
+            for j in range(num_locations):
+                if i != j and i < j:
+                    distance_bakeries_spinbox = getattr(self.ui, f"distance_bakeries_spinbox_{i+1}_{j+1}")
+                    distance_bakeries_spinbox.hide()
+
+        # Hide distance input widgets
+        for i in range(num_neighborhoods):
+            for j in range(num_locations):
+                distance_spinbox = getattr(self.ui, f"distance_spinbox_{i+1}_{j+1}")
+                distance_spinbox.hide()
+
+        # Hide distance_min and distance_max input widgets
+        getattr(self.ui, f"distance_min_spinbox").hide()
+        getattr(self.ui, f"distance_max_spinbox").hide()
+        # Set the newly added page as the current widget
+        self.ui.stackedWidget.setCurrentWidget(self.ui.problem_2_page)
     def on_btn_problem_2_submit_clicked(self):
         # Read the values entered in the input widgets
         num_neighborhoods = self.ui.input_1_2.value()
         num_locations = self.ui.input_2_2.value()
 
 
-        self.ui.problem2_submit_btn.hide()
-        self.ui.problem2_enter_btn.show()
-        self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res2_page)
-        # Save the values in a MySQL database
-        # self.save_to_database("problem 2", input_1_value, input_2_value, input_3_value, input_4_value, "this is a result")
-        # Define lists to store the values
-        capacities = []
-        costs = []
-        distances = []
-        distance_min = 0
-        distance_max = 0
-        distance_bakeries = []
+        # Check if the values are less than 2
+        if num_neighborhoods < 2 or num_locations < 2:
+            # Display a pop-up message
+            msg_box = QMessageBox()
+            msg_box.setWindowTitle("Error")
+            msg_box.setText("Number of locations and neighborhoods needs to be greater or equal to 2.")
+            msg_box.setIcon(QMessageBox.Warning)
+            msg_box.addButton(QMessageBox.Ok)
+            msg_box.exec_()
+            # Reload the page
+            self.reload_page(num_locations,num_neighborhoods)
+        else:
+            self.ui.problem2_submit_btn.hide()
+            self.ui.problem2_enter_btn.show()
+            self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res2_page)
+            capacities = []
+            costs = []
+            D=[]
+            distances = []
+            distance_min = 0
+            distance_max = 0
+            
+            distance_bakeries = []
+            '''
+            self.ui.problem2_submit_btn.hide()
+            self.ui.problem2_enter_btn.show()
+            self.ui.stackedWidget.setCurrentWidget(self.ui.gurobi_res2_page)'''
+            # Save the values in a MySQL database
+            # self.save_to_database("problem 2", input_1_value, input_2_value, input_3_value, input_4_value, "this is a result")
+            # Define lists to store the values
+            
 
-        # Collect capacities and costs
-        for i in range(num_locations):
-            capacity_spinbox = getattr(self.ui, f"capacity_spinbox_{i+1}")
-            cost_spinbox = getattr(self.ui, f"cost_spinbox_{i+1}")
+            # Collect capacities and costs
+            for i in range(num_locations):
+                capacity_spinbox = getattr(self.ui, f"capacity_spinbox_{i+1}")
+                cost_spinbox = getattr(self.ui, f"cost_spinbox_{i+1}")
 
-            capacities.append(capacity_spinbox.value())
-            costs.append(cost_spinbox.value())
+                capacities.append(capacity_spinbox.value())
+                costs.append(cost_spinbox.value())
 
-        # Collect distances, distances_min, and distances_max
-        for i in range(num_neighborhoods):
-            for j in range(num_locations):
-                distance_spinbox = getattr(self.ui, f"distance_spinbox_{i+1}_{j+1}")
+            # Collect distances, distances_min, and distances_max
+            for i in range(num_neighborhoods):
+                Dis=[]
+                for j in range(num_locations):
+                    distance_spinbox = getattr(self.ui, f"distance_spinbox_{i+1}_{j+1}")
+                    
+                    Dis.append(distance_spinbox.value())
+                distances.append(Dis)
                 
+            D = np.array(distances)   
+                    
+            distance_min = getattr(self.ui, f"distance_min_spinbox").value()
+            distance_max = getattr(self.ui, f"distance_max_spinbox").value()
+            # Define the distance matrix between locations
+            DB = np.zeros((num_locations, num_locations))
+            for i in range(num_locations):
+                for j in range(num_locations):
+                    if i != j and i < j:  # Avoid reading spin boxes for distances between the same location
+                        distance_bakeries_spinbox = getattr(self.ui, f"distance_bakeries_spinbox_{i+1}_{j+1}")
+                        DB[i,j] = distance_bakeries_spinbox.value()
+                        DB[j,i] = distance_bakeries_spinbox.value()
+            
+            I=list()
+            for i in range(num_neighborhoods):
+                I.append(f'Neighborhood {i}')
+            J=list()
+            for i in range(num_locations):
+                J.append(f'Location {i}')
+            
+            
 
-                distances.append(distance_spinbox.value())
-                
-        distance_min = getattr(self.ui, f"distance_min_spinbox").value()
-        distance_max = getattr(self.ui, f"distance_max_spinbox").value()
-        for i in range(num_locations):
-            for j in range(num_locations):
-                if i != j and i < j:  # Avoid reading spin boxes for distances between the same location
-                    distance_bakeries_spinbox = getattr(self.ui, f"distance_bakeries_spinbox_{i+1}_{j+1}")
+            print("Neighborhoods:", num_neighborhoods)
+            print("Bakeries:", num_locations)
+            print("Capacities List:", capacities)
+            print("Costs List:", costs)
+            print("Distances List:", D)
+            print("Distances min List:", distance_min)
+            print("Distances max List:", distance_max)
+            print("Distances Bakeries List:", DB)
 
-                    distance_bakeries.append(f"({i+1},{j+1}):{distance_bakeries_spinbox.value()}")
+            status,params, res = optimize_bakery_location(I, J,capacities, costs, D, distance_max, DB, distance_min)
+            if res == None:
+                resultat=f'problem resolution resolved in the following status: {status} \n with the following solution {params}'
+                if params=={} or params==[]:
+                    resultat=f'problem resolution resolved in the following status: {status} \n '
+            else:
+                resultat=f'problem resolution resolved in the following status: {status} \n with  an objective function equals to {res} given the following coefficents {params}'
 
+            #############################
+            
+            print(status)
+            print("--------------------------")
+            print(params)
+            print("--------------------------")
+            print(res)
+            
 
-
-        print("Neighborhoods:", num_neighborhoods)
-        print("Bakeries:", num_locations)
-        print("Capacities List:", capacities)
-        print("Costs List:", costs)
-        print("Distances List:", distances)
-        print("Distances min List:", distance_min)
-        print("Distances max List:", distance_max)
-        print("Distances Bakeries List:", distance_bakeries)
-        self.save_to_database2("Build Bakeries",num_neighborhoods ,num_locations,capacities, costs, distances, distance_min, distance_max, distance_bakeries, "result problem 2")
-        # Now you have all the values collected in lists
+            self.save_to_database2("Build Bakeries",num_neighborhoods ,num_locations,capacities, costs, distances, distance_min, distance_max, distance_bakeries, "result problem 2")
+            # Now you have all the values collected in lists
 
 
     def save_to_database(self, problemName, profit_list, weighting_list, flour_list, butter_list, sugar_list, eggs_list, oven_time_list,general_list, result):
@@ -681,7 +827,7 @@ class MainWindow(QMainWindow):
                 host="localhost",
                 user="root",
                 password="MySQLadmin",
-                database="RO_history"
+                database="RO_history" 
             )
 
             cursor = connection.cursor()

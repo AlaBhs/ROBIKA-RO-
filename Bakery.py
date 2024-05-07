@@ -41,12 +41,12 @@ def optimize_production(profit_coefficients, resource_coefficients, resource_lim
 
 
     # Constraints: Minimum Production Requirements
-    if minimum_production is not None:
+    if minimum_production is not None and minimum_production != []:
         for i, min_prod in enumerate(minimum_production):
             model.addConstr(x[i] >= min_prod)
 
     # Constraints: Oven Capacity
-    if oven_capacity is not None:
+    if oven_capacity is not None and oven_capacity !=[]:
         model.addConstr(sum(oven_capacity[i] * x[i] for i in goods) <= oven_capacity[-1])
 
     # Constraints: Dietary Restrictions

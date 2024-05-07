@@ -3,7 +3,9 @@ from gurobipy import GRB
 import numpy as np
 from Gurobi import RunBinaryPLSolution
 
-def optimize_bakery_location(I, J, Q, C, D, Dmax, DB, Dmin, time_limit):
+def optimize_bakery_location(I, J, Q, C, D, Dmax, DB, Dmin, time_limit=60):
+    if len (I)<2 or len(J)<2:
+        return "the number of locations or neighborhood needs to be grather or equal to 2 ",None,None
     # Initialize the model
     model = gp.Model("Bakery_Location")
 

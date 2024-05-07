@@ -27,7 +27,7 @@ def RunPLSolution (model,x,num,attempts=3):
     status= get_status_description(model.Status) 
     Optimal_solution=[]
     ###########
-
+    solution={}
     # Print solution
     if model.status == GRB.OPTIMAL:
         print("Optimal Solution:")
@@ -43,32 +43,36 @@ def RunPLSolution (model,x,num,attempts=3):
 
                 if model.IISMinimal:
                     print("IIS computed successfully. The following constraints are infeasible together:")
-                    for constr in model.getConstrs():
+                    for i ,constr in enumerate(model.getConstrs()):
                         if constr.IISConstr:
+                            solution[f'non respected constraint number {i}']=f"- {constr.ConstrName}:{model.getRow(constr)}"
                             print(f"- {constr.ConstrName}:{model.getRow(constr)}")
                 else:
                     print("No IIS found. The model may be feasible after all.")
         except GurobiError as e:
                 print("Error computing IIS:", e)
-        return status,Optimal_solution, None
+        return status,solution, None
     elif model.status == GRB.INF_OR_UNBD:
         if attempts > 0:
             model.setParam('DualReductions', 0)
             return RunPLSolution(model, x, num, attempts - 1)
         else:
             print("Maximum attempts reached. Exiting.")
-            return status, Optimal_solution, None
+            return status,solution, None
     elif model.status == GRB.UNBOUNDED:
         print("Model is unbounded.")
-        return status,Optimal_solution, None
+        return status,solution, None
     else:   
         # Check if solution is feasible
         print("No feasible solution found.")
         # Print violated constraints
-        for constr in model.getConstrs():
+        for i ,constr in enumerate(model.getConstrs()):
+
             try:
                 if constr.Slack < 0:
                     print(f"Constraint '{constr.ConstrName}' is violated by {-constr.Slack}.")
+                    solution[f'Err{i}']=f"Constraint '{constr.ConstrName}' is violated by {-constr.Slack}."
+
             except AttributeError:
                 continue
             
@@ -77,10 +81,11 @@ def RunPLSolution (model,x,num,attempts=3):
                 lhs = sum(constr_expr.getCoeff(j) * x[j].X for j in num)
                 if lhs > constr.RHS:
                     print(f"Constraint '{constr.ConstrName}' is violated by {lhs - constr.RHS}.")
+                    solution[f'Err{i}']=f"Constraint '{constr.ConstrName}' is violated by {lhs - constr.RHS}."
             except AttributeError:
                 continue
 
-        return status,Optimal_solution, None
+        return status,solution, None
 def RunBinaryPLSolution (model,J,x,num,attempts=3):
     # Solve
     model.optimize()
@@ -98,7 +103,7 @@ def RunBinaryPLSolution (model,J,x,num,attempts=3):
                 print(f"Bakery at location {J[j]}")
             else:
                 solution[J[j]] = False
-        return status, solution, None
+        return status, solution, model.objVal
         
     elif model.status == GRB.INFEASIBLE:
         try:
@@ -107,8 +112,9 @@ def RunBinaryPLSolution (model,J,x,num,attempts=3):
 
                 if model.IISMinimal:
                     print("IIS computed successfully. The following constraints are infeasible together:")
-                    for constr in model.getConstrs():
+                    for i ,constr in enumerate(model.getConstrs()):
                         if constr.IISConstr:
+                            solution[f'non respected constraint number {i}']=f"- {constr.ConstrName}:{model.getRow(constr)}"
                             print(f"- {constr.ConstrName}:{model.getRow(constr)}")
                 else:
                     print("No IIS found. The model may be feasible after all.")
@@ -129,11 +135,13 @@ def RunBinaryPLSolution (model,J,x,num,attempts=3):
         # Check if solution is feasible
         print("No feasible solution found.")
         # Print violated constraints
-        for constr in model.getConstrs():
+        for i ,constr in enumerate(model.getConstrs()):
 
             try:
                 if constr.Slack < 0:
                     print(f"Constraint '{constr.ConstrName}' is violated by {-constr.Slack}.")
+                    solution[f'Err{i}']=f"Constraint '{constr.ConstrName}' is violated by {-constr.Slack}."
+
             except AttributeError:
                 continue
             
@@ -142,6 +150,7 @@ def RunBinaryPLSolution (model,J,x,num,attempts=3):
                 lhs = sum(constr_expr.getCoeff(j) * x[j].X for j in num)
                 if lhs > constr.RHS:
                     print(f"Constraint '{constr.ConstrName}' is violated by {lhs - constr.RHS}.")
+                    solution[f'Err{i}']=f"Constraint '{constr.ConstrName}' is violated by {lhs - constr.RHS}."
             except AttributeError:
                 continue
 
